@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b11atlm50s4bx"]
+
+[ext_resource type="Script" uid="uid://dep1jluaqyuhp" path="res://Scene/UI/game_menu_screen_background.gd" id="1_n323f"]
+[ext_resource type="Texture2D" uid="uid://cxpugx0n4awa3" path="res://Assets/Images/Titlescreens/sTitlescreen_Gameover_YouDidntMakeIt.png" id="2_n323f"]
+
+[node name="GameMenuScreenBackground" type="Node2D" unique_id=1485399452]
+script = ExtResource("1_n323f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=454338753]
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("2_n323f")
+centered = false

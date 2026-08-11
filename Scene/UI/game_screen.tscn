@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cp6cdnv43b0dh"]
+
+[ext_resource type="PackedScene" uid="uid://bsb58jvwiujel" path="res://Scene/UI/count_down_panel.tscn" id="1_sbtni"]
+[ext_resource type="Script" uid="uid://c3wcy65bhx5vk" path="res://Scene/UI/label.gd" id="2_vtafi"]
+[ext_resource type="PackedScene" uid="uid://yxhyplhqajcm" path="res://Scene/UI/skill_panel.tscn" id="3_vtafi"]
+
+[node name="GameScreen" type="CanvasLayer" unique_id=1400287572]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=383285427]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CountDownPanel" parent="MarginContainer" unique_id=420623034 instance=ExtResource("1_sbtni")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=235980613]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=400123941]
+layout_mode = 2
+text = "0 KeoCoins"
+script = ExtResource("2_vtafi")
+
+[node name="SkillPanel" parent="MarginContainer/VBoxContainer" unique_id=216889701 instance=ExtResource("3_vtafi")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bwiry1y7hvb6c"]
+
+[ext_resource type="Script" uid="uid://dep1jluaqyuhp" path="res://Scene/UI/game_menu_screen_background.gd" id="1_35ac8"]
+[ext_resource type="Texture2D" uid="uid://c3vt2qsh2yxbr" path="res://Assets/Images/Titlescreens/sTitlescreen_v5.png" id="2_35ac8"]
+
+[node name="GameMenuScreenBackground" type="Node2D" unique_id=1485399452]
+script = ExtResource("1_35ac8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=454338753]
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("2_35ac8")
+centered = false

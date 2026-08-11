@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ewed0tmjgku4"]
+
+[ext_resource type="PackedScene" uid="uid://c6ibyila7mdu" path="res://Scene/Component/day_and_night_cycle_component.tscn" id="1_06yma"]
+[ext_resource type="PackedScene" uid="uid://dgd3qg3mdqrjo" path="res://Scene/Character/Player/player.tscn" id="1_j4qrl"]
+[ext_resource type="PackedScene" uid="uid://cp6cdnv43b0dh" path="res://Scene/UI/game_screen.tscn" id="2_31fxm"]
+[ext_resource type="PackedScene" uid="uid://dhi6d4s2ggj2u" path="res://Scene/Level/level_1.tscn" id="2_i64o6"]
+[ext_resource type="Texture2D" uid="uid://bvqn00u75g8qf" path="res://Assets/Images/light.png" id="3_4kvl3"]
+[ext_resource type="PackedScene" uid="uid://w5pfg3blh370" path="res://Scene/UI/shop_screen.tscn" id="5_k2rys"]
+[ext_resource type="AudioStream" uid="uid://dljdjee8mgixr" path="res://Assets/Sounds/AmbientMusicCalm.mp3" id="5_lee88"]
+[ext_resource type="AudioStream" uid="uid://dyq1pfpdkbphd" path="res://Assets/Sounds/AmbientMusicFight.mp3" id="6_1d8q1"]
+[ext_resource type="Script" uid="uid://ddx7biwgwda24" path="res://Scene/music.gd" id="7_1d8q1"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_k2rys"]
+stream_count = 2
+stream_0/stream = ExtResource("5_lee88")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("6_1d8q1")
+stream_1/volume = 0.0
+
+[node name="MainScene" type="Node" unique_id=1765893617]
+
+[node name="GameRoot" type="Node2D" parent="." unique_id=1115628024]
+y_sort_enabled = true
+
+[node name="DayAndNightCycleComponent" parent="GameRoot" unique_id=571765713 instance=ExtResource("1_06yma")]
+
+[node name="LevelRoot" type="Node2D" parent="GameRoot" unique_id=1881368026]
+y_sort_enabled = true
+
+[node name="Level1" parent="GameRoot/LevelRoot" unique_id=1856734920 instance=ExtResource("2_i64o6")]
+
+[node name="Player" parent="GameRoot" unique_id=480484202 instance=ExtResource("1_j4qrl")]
+position = Vector2(280, 177)
+
+[node name="Camera2D" type="Camera2D" parent="GameRoot/Player" unique_id=638224401]
+zoom = Vector2(1.75, 1.75)
+limit_left = 0
+limit_top = 0
+limit_right = 3584
+limit_bottom = 2560
+position_smoothing_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="GameRoot/Player" unique_id=754935341]
+texture = ExtResource("3_4kvl3")
+
+[node name="GameScreen" parent="GameRoot" unique_id=1400287572 instance=ExtResource("2_31fxm")]
+
+[node name="ShopScreen" parent="GameRoot" unique_id=540270839 instance=ExtResource("5_k2rys")]
+visible = false
+
+[node name="Music" type="AudioStreamPlayer" parent="GameRoot" unique_id=1140516468]
+stream = SubResource("AudioStreamSynchronized_k2rys")
+autoplay = true
+script = ExtResource("7_1d8q1")

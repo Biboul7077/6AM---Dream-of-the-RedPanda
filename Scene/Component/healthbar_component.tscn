@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://7wm2gdltwqh1"]
+
+[ext_resource type="Theme" uid="uid://b3xrbodd20u5t" path="res://Scene/UI/game_ui_theme.tres" id="1_ysdur"]
+[ext_resource type="Script" uid="uid://dho7266sdjq43" path="res://Scene/Component/healthbar_component.gd" id="2_vst7g"]
+
+[node name="HealthbarComponent" type="ProgressBar" unique_id=1410572372]
+offset_right = 24.0
+offset_bottom = 14.0
+theme = ExtResource("1_ysdur")
+theme_type_variation = &"TextureHealthbar"
+value = 100.0
+show_percentage = false
+script = ExtResource("2_vst7g")

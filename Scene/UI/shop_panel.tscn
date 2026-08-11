@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://mschdak0kdnh"]
+
+[ext_resource type="Theme" uid="uid://b3xrbodd20u5t" path="res://Scene/UI/game_ui_theme.tres" id="1_1yfji"]
+[ext_resource type="Script" uid="uid://ddtp0rulxed01" path="res://Scene/UI/shop_panel.gd" id="2_7xl31"]
+[ext_resource type="Texture2D" uid="uid://ka60e02nltnb" path="res://Assets/Images/UI/sIconDamageUpgrade.png" id="2_jntod"]
+[ext_resource type="Texture2D" uid="uid://bdr86ulvo1j78" path="res://Assets/Images/UI/sIconRecoverUpgrade.png" id="3_5i5bp"]
+[ext_resource type="Texture2D" uid="uid://3cubq0xm2t7p" path="res://Assets/Images/UI/sIconSpeedUpgrade.png" id="4_kxek1"]
+[ext_resource type="AudioStream" uid="uid://1xtkopt2a6rn" path="res://Assets/Sounds/sndBuyUpgrade.wav" id="6_6sfli"]
+
+[node name="ShopPanel" type="PanelContainer" unique_id=1021193151]
+offset_right = 636.0
+offset_bottom = 320.0
+theme = ExtResource("1_1yfji")
+script = ExtResource("2_7xl31")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1520972621]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2129596646]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Upgrade1" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1774077146]
+custom_minimum_size = Vector2(180, 320)
+layout_mode = 2
+theme_type_variation = &"ShopButton"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Upgrade1" unique_id=576329190]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Upgrade1/MarginContainer" unique_id=351181947]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Upgrade1/MarginContainer/VBoxContainer" unique_id=1270621433]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="LabelEffect" type="Label" parent="MarginContainer/HBoxContainer/Upgrade1/MarginContainer/VBoxContainer/MarginContainer" unique_id=1443564318]
+layout_mode = 2
+text = "+20% Movement
+Speed"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Upgrade1/MarginContainer/VBoxContainer" unique_id=883743103]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_jntod")
+
+[node name="LabelPrice" type="Label" parent="MarginContainer/HBoxContainer/Upgrade1/MarginContainer/VBoxContainer" unique_id=529828907]
+layout_mode = 2
+text = "Costs 40 KeoCoins"
+horizontal_alignment = 1
+
+[node name="Upgrade2" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1123987485]
+custom_minimum_size = Vector2(180, 320)
+layout_mode = 2
+theme_type_variation = &"ShopButton"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Upgrade2" unique_id=633435841]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Upgrade2/MarginContainer" unique_id=346481410]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Upgrade2/MarginContainer/VBoxContainer" unique_id=21384292]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="LabelEffect" type="Label" parent="MarginContainer/HBoxContainer/Upgrade2/MarginContainer/VBoxContainer/MarginContainer" unique_id=1689305761]
+layout_mode = 2
+text = "+20% Movement
+Speed"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Upgrade2/MarginContainer/VBoxContainer" unique_id=358281562]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("3_5i5bp")
+
+[node name="LabelPrice" type="Label" parent="MarginContainer/HBoxContainer/Upgrade2/MarginContainer/VBoxContainer" unique_id=489087292]
+layout_mode = 2
+text = "Costs 40 KeoCoins"
+horizontal_alignment = 1
+
+[node name="Upgrade3" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1017058961]
+custom_minimum_size = Vector2(180, 320)
+layout_mode = 2
+theme_type_variation = &"ShopButton"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Upgrade3" unique_id=1951325817]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Upgrade3/MarginContainer" unique_id=501203424]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Upgrade3/MarginContainer/VBoxContainer" unique_id=1149541028]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="LabelEffect" type="Label" parent="MarginContainer/HBoxContainer/Upgrade3/MarginContainer/VBoxContainer/MarginContainer" unique_id=1592064155]
+layout_mode = 2
+text = "+20% Movement
+Speed"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Upgrade3/MarginContainer/VBoxContainer" unique_id=1632691313]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("4_kxek1")
+
+[node name="LabelPrice" type="Label" parent="MarginContainer/HBoxContainer/Upgrade3/MarginContainer/VBoxContainer" unique_id=1057342053]
+layout_mode = 2
+text = "Costs 40 KeoCoins"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2145251877]
+stream = ExtResource("6_6sfli")
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Upgrade1" to="." method="_on_upgrade_1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Upgrade2" to="." method="_on_upgrade_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Upgrade3" to="." method="_on_upgrade_3_pressed"]

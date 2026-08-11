@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bxfhy7u77ju2k"]
+
+[ext_resource type="Texture2D" uid="uid://bdr86ulvo1j78" path="res://Assets/Images/UI/sIconRecoverUpgrade.png" id="1_fsjq0"]
+[ext_resource type="Script" uid="uid://bhi2saewn0tcv" path="res://Script/Resources/upgrade_data.gd" id="2_tulcw"]
+
+[resource]
+script = ExtResource("2_tulcw")
+upgrade_name = "Recover Faster"
+description = "-15% recovery time"
+icon = ExtResource("1_fsjq0")
+variable_name = "player_recovery_time"
+value = 0.85
+operation = 2
+metadata/_custom_type_script = "uid://bhi2saewn0tcv"

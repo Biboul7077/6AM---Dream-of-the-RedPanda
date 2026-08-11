@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="KillerQueenSkill" format=3 uid="uid://cbchbnydjt1ef"]
+
+[ext_resource type="Script" uid="uid://bhtai05s0ye6w" path="res://Script/Resources/Skills/skill_killerqueen.gd" id="1_sbolu"]
+[ext_resource type="Texture2D" uid="uid://s0b74asvk2et" path="res://Assets/Images/UI/sIconKillerQueen.png" id="1_u8wjx"]
+
+[resource]
+script = ExtResource("1_sbolu")
+skill_name = "Time Bomb"
+description = "Put a bomb on a enemy a few seconds in the future"
+icon = ExtResource("1_u8wjx")
+cast_cooldown = 6
+rest_cooldown = 20
+metadata/_custom_type_script = "uid://bhtai05s0ye6w"

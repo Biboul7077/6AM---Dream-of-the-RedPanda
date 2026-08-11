@@ -1,0 +1,163 @@
+[gd_resource type="Theme" format=3 uid="uid://b3xrbodd20u5t"]
+
+[ext_resource type="FontFile" uid="uid://dbq8svmw2nq0k" path="res://Assets/Fonts/LCD.ttf" id="1_qc3n8"]
+[ext_resource type="Texture2D" uid="uid://dthk42mi0dtg3" path="res://Assets/Images/UI/sAlarmClock.png" id="2_qc3n8"]
+[ext_resource type="Texture2D" uid="uid://ckbngejb8qa14" path="res://Assets/Images/UI/sCardUpgrade.png" id="3_swuej"]
+[ext_resource type="Texture2D" uid="uid://85jn7clbj3r5" path="res://Assets/Images/UI/sHealthbarBackground.png" id="4_8m1cg"]
+[ext_resource type="Texture2D" uid="uid://b2o3b3ejt8n4r" path="res://Assets/Images/UI/sEnergyBarBackground.png" id="4_i1spv"]
+[ext_resource type="Texture2D" uid="uid://difo6021vijjy" path="res://Assets/Images/UI/sHealthbarFill.png" id="5_g4v6p"]
+[ext_resource type="Texture2D" uid="uid://4tdr4ithiaij" path="res://Assets/Images/UI/sEnergyBarFill.png" id="5_swuej"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qc3n8"]
+texture = ExtResource("2_qc3n8")
+texture_margin_left = 9.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 11.0
+
+[sub_resource type="FontVariation" id="FontVariation_8m1cg"]
+base_font = ExtResource("1_qc3n8")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i1spv"]
+load_path = "res://.godot/imported/sButtonMenu.png-f37fa2ada5fdcf7ccb3eabc0e74e1e98.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swuej"]
+atlas = SubResource("CompressedTexture2D_i1spv")
+region = Rect2(1, 97, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rkj8y"]
+texture = SubResource("AtlasTexture_swuej")
+texture_margin_left = 5.0
+texture_margin_top = 3.0
+texture_margin_right = 5.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1j0vk"]
+load_path = "res://.godot/imported/sButtonMenu.png-f37fa2ada5fdcf7ccb3eabc0e74e1e98.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkj8y"]
+atlas = SubResource("CompressedTexture2D_1j0vk")
+region = Rect2(1, 97, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ids5x"]
+texture = SubResource("AtlasTexture_rkj8y")
+texture_margin_left = 5.0
+texture_margin_top = 3.0
+texture_margin_right = 5.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f187o"]
+load_path = "res://.godot/imported/sButtonMenu.png-f37fa2ada5fdcf7ccb3eabc0e74e1e98.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ei6w"]
+atlas = SubResource("CompressedTexture2D_f187o")
+region = Rect2(1, 65, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c7by2"]
+texture = SubResource("AtlasTexture_8ei6w")
+texture_margin_left = 5.0
+texture_margin_top = 3.0
+texture_margin_right = 5.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_swuej"]
+load_path = "res://.godot/imported/sButtonMenu.png-f37fa2ada5fdcf7ccb3eabc0e74e1e98.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j0vk"]
+atlas = SubResource("CompressedTexture2D_swuej")
+region = Rect2(1, 97, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f187o"]
+texture = SubResource("AtlasTexture_1j0vk")
+texture_margin_left = 5.0
+texture_margin_top = 3.0
+texture_margin_right = 5.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kpd7m"]
+load_path = "res://.godot/imported/sButtonMenu.png-f37fa2ada5fdcf7ccb3eabc0e74e1e98.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmaws"]
+atlas = SubResource("CompressedTexture2D_kpd7m")
+region = Rect2(1, 35, 30, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y8jst"]
+texture = SubResource("AtlasTexture_bmaws")
+texture_margin_left = 5.0
+texture_margin_top = 3.0
+texture_margin_right = 5.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="FontVariation" id="FontVariation_humu4"]
+base_font = ExtResource("1_qc3n8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ei6w"]
+texture = ExtResource("3_swuej")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="FontVariation" id="FontVariation_swuej"]
+base_font = ExtResource("1_qc3n8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0nd53"]
+texture = ExtResource("4_i1spv")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8mb17"]
+texture = ExtResource("5_swuej")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_swuej"]
+texture = ExtResource("4_8m1cg")
+texture_margin_left = 5.26749
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1j0vk"]
+texture = ExtResource("5_g4v6p")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(0, 0, 32, 32)
+
+[resource]
+AlarmLabel/base_type = &"Label"
+AlarmLabel/font_sizes/font_size = 32
+AlarmLabel/fonts/font = ExtResource("1_qc3n8")
+AlarmPanel/base_type = &"PanelContainer"
+AlarmPanel/styles/panel = SubResource("StyleBoxTexture_qc3n8")
+GameMenuButton/base_type = &"Button"
+GameMenuButton/font_sizes/font_size = 16
+GameMenuButton/fonts/font = SubResource("FontVariation_8m1cg")
+GameMenuButton/styles/disabled = SubResource("StyleBoxTexture_rkj8y")
+GameMenuButton/styles/focus = SubResource("StyleBoxTexture_ids5x")
+GameMenuButton/styles/hover = SubResource("StyleBoxTexture_c7by2")
+GameMenuButton/styles/normal = SubResource("StyleBoxTexture_f187o")
+GameMenuButton/styles/pressed = SubResource("StyleBoxTexture_y8jst")
+MainTitleLabel/base_type = &"Label"
+MainTitleLabel/font_sizes/font_size = 46
+MainTitleLabel/fonts/font = SubResource("FontVariation_humu4")
+ShopButton/base_type = &"Button"
+ShopButton/styles/normal = SubResource("StyleBoxTexture_8ei6w")
+TexturEnergybar/base_type = &"ProgressBar"
+TexturEnergybar/colors/font_outline_color = Color(0, 0, 0, 1)
+TexturEnergybar/font_sizes/font_size = 32
+TexturEnergybar/fonts/font = SubResource("FontVariation_swuej")
+TexturEnergybar/styles/background = SubResource("StyleBoxTexture_0nd53")
+TexturEnergybar/styles/fill = SubResource("StyleBoxTexture_8mb17")
+TextureHealthbar/base_type = &"ProgressBar"
+TextureHealthbar/styles/background = SubResource("StyleBoxTexture_swuej")
+TextureHealthbar/styles/fill = SubResource("StyleBoxTexture_1j0vk")

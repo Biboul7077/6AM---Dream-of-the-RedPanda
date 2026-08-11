@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://dgd3qg3mdqrjo"]
+
+[ext_resource type="Script" uid="uid://cblc3yi58gqbe" path="res://Scene/Character/Player/player.gd" id="1_1tc5g"]
+[ext_resource type="Script" uid="uid://dfb0y0ohmabub" path="res://Script/State Machine/node_state_machine.gd" id="1_087al"]
+[ext_resource type="Texture2D" uid="uid://y2p5m070a0ji" path="res://Assets/Images/Characters/sRedPanda.png" id="2_b4qd8"]
+[ext_resource type="Script" uid="uid://dmjulcqk0s3l1" path="res://Scene/Character/Player/idle_state.gd" id="2_vmgdj"]
+[ext_resource type="Script" uid="uid://fawxl83e4bc8" path="res://Scene/Character/Player/walk_state.gd" id="3_8xcb8"]
+[ext_resource type="Script" uid="uid://dryral4elb6dc" path="res://Scene/Character/Player/attack_state.gd" id="5_bubao"]
+[ext_resource type="Script" uid="uid://cvx0oje7vewj5" path="res://Scene/Character/Player/dodge_state.gd" id="6_1nox1"]
+[ext_resource type="Script" uid="uid://bypowyxhv4ugb" path="res://Scene/Character/Player/cast_state.gd" id="8_kmjhx"]
+[ext_resource type="Script" uid="uid://c1w8ss7217xby" path="res://Scene/Character/Player/knocked_out_state.gd" id="10_mbl8b"]
+[ext_resource type="Script" uid="uid://cr8nevrartx1f" path="res://Scene/Character/Player/locked_state.gd" id="11_b4qd8"]
+[ext_resource type="PackedScene" uid="uid://b6tdrpkni3y3u" path="res://Scene/Object/weapon.tscn" id="11_mbl8b"]
+[ext_resource type="PackedScene" uid="uid://do8rifw7unru1" path="res://Scene/Component/hurt_component.tscn" id="12_mbl8b"]
+[ext_resource type="AudioStream" uid="uid://ctygblore0y4i" path="res://Assets/Sounds/sndSkillTimestop.mp3" id="14_revbx"]
+[ext_resource type="AudioStream" uid="uid://dk323v1kanciq" path="res://Assets/Sounds/sndHitPlayer.wav" id="15_bdeum"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_revbx"]
+atlas = ExtResource("2_b4qd8")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdeum"]
+atlas = ExtResource("2_b4qd8")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgd1v"]
+atlas = ExtResource("2_b4qd8")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpu4x"]
+atlas = ExtResource("2_b4qd8")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6xpj"]
+atlas = ExtResource("2_b4qd8")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01fh2"]
+atlas = ExtResource("2_b4qd8")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0for"]
+atlas = ExtResource("2_b4qd8")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdskm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_revbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdeum")
+}],
+"loop": true,
+"name": &"Cast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgd1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpu4x")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6xpj")
+}],
+"loop": true,
+"name": &"KnockedOut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01fh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0for")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b4qd8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_revbx"]
+radius = 11.0
+height = 34.0
+
+[node name="Player" type="CharacterBody2D" unique_id=480484202]
+y_sort_enabled = true
+collision_layer = 2
+script = ExtResource("1_1tc5g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=94835749]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_kdskm")
+animation = &"Walk"
+autoplay = "Idle"
+centered = false
+offset = Vector2(-24, -48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=302076168]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_b4qd8")
+
+[node name="State Machine" type="Node" parent="." unique_id=1907448807 node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("1_087al")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine" unique_id=36902124 node_paths=PackedStringArray("player", "animated_sprite_2d", "hurt_component")]
+script = ExtResource("2_vmgdj")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+hurt_component = NodePath("../../HurtComponent")
+
+[node name="Walk" type="Node" parent="State Machine" unique_id=237305343 node_paths=PackedStringArray("player", "animated_sprite_2d", "hurt_component")]
+script = ExtResource("3_8xcb8")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+hurt_component = NodePath("../../HurtComponent")
+
+[node name="Attack" type="Node" parent="State Machine" unique_id=916112513 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("5_bubao")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="Dodge" type="Node" parent="State Machine" unique_id=1395001225 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("6_1nox1")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+speed = 400
+dodge_state_time_interval = 0.2
+
+[node name="Cast" type="Node" parent="State Machine" unique_id=121617026 node_paths=PackedStringArray("player", "animated_sprite_2d", "audio_stream_player_2d")]
+script = ExtResource("8_kmjhx")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+audio_stream_player_2d = NodePath("../../AudioStreamPlayer")
+
+[node name="KnockedOut" type="Node" parent="State Machine" unique_id=1732259795 node_paths=PackedStringArray("player", "animated_sprite_2d", "audio_stream_player_2d")]
+script = ExtResource("10_mbl8b")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+audio_stream_player_2d = NodePath("../../AudioStreamPlayer2D")
+
+[node name="Locked" type="Node" parent="State Machine" unique_id=982591248]
+script = ExtResource("11_b4qd8")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=650425031]
+y_sort_enabled = true
+position = Vector2(0, -13)
+
+[node name="Weapon" parent="Marker2D" unique_id=1900707609 instance=ExtResource("11_mbl8b")]
+y_sort_enabled = true
+
+[node name="HurtComponent" parent="." unique_id=638363476 instance=ExtResource("12_mbl8b")]
+position = Vector2(0, -24)
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent" unique_id=977497607]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_revbx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=835319970]
+position = Vector2(0, -24)
+stream = ExtResource("14_revbx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1137486687]
+position = Vector2(0, -24)
+stream = ExtResource("15_bdeum")

@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://b14lugt2ladmn"]
+
+[ext_resource type="Theme" uid="uid://b3xrbodd20u5t" path="res://Scene/UI/game_ui_theme.tres" id="1_7uf0k"]
+[ext_resource type="Script" uid="uid://dl4w1mecakiqd" path="res://Scene/UI/game_menu_screen.gd" id="1_bafkq"]
+[ext_resource type="Texture2D" uid="uid://dwn5gsbv65jpc" path="res://Assets/Images/Titlescreens/sTitlescreen_Gameover_YouMadeIt.png" id="3_1slke"]
+[ext_resource type="Texture2D" uid="uid://cxpugx0n4awa3" path="res://Assets/Images/Titlescreens/sTitlescreen_Gameover_YouDidntMakeIt.png" id="4_hwph3"]
+[ext_resource type="AudioStream" uid="uid://dgeixmmw4m4b3" path="res://Assets/Sounds/MainMenu.mp3" id="4_pl3cw"]
+[ext_resource type="Texture2D" uid="uid://c3vt2qsh2yxbr" path="res://Assets/Images/Titlescreens/sTitlescreen_v5.png" id="6_1umql"]
+
+[node name="GameMenuScreen" type="CanvasLayer" unique_id=463177816]
+script = ExtResource("1_bafkq")
+
+[node name="GameMenuScreenBackground" type="TextureRect" parent="." unique_id=56047246]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_1umql")
+
+[node name="GameOverScreenBackgroundGoodEnding" type="TextureRect" parent="." unique_id=160526598]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1slke")
+
+[node name="GameOverScreenBackgroundBadEnding" type="TextureRect" parent="." unique_id=792207429]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_hwph3")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1430554277]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7uf0k")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=1314360349]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer" unique_id=859024230]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_type_variation = &"MainTitleLabel"
+theme_override_colors/font_color = Color(0.7254902, 0.27058825, 0.11372549, 1)
+theme_override_colors/font_outline_color = Color(0.38039216, 0.15294118, 0.12941177, 1)
+theme_override_constants/outline_size = 9
+text = "DREAM OF A RED PANDA"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=703815750]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="StartGameButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1305937847]
+custom_minimum_size = Vector2(176, 58)
+layout_mode = 2
+theme_type_variation = &"GameMenuButton"
+theme_override_font_sizes/font_size = 18
+text = "START"
+
+[node name="QuitGameButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=704046412]
+custom_minimum_size = Vector2(176, 58)
+layout_mode = 2
+theme_type_variation = &"GameMenuButton"
+text = "QUIT
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=775917613]
+stream = ExtResource("4_pl3cw")
+parameters/looping = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]

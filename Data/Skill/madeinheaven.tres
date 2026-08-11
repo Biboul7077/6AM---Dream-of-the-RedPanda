@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MadeInHeavenSkill" format=3 uid="uid://dt7pwqyp4ydhq"]
+
+[ext_resource type="Texture2D" uid="uid://bvk5wyevdocuc" path="res://Assets/Images/UI/sIconMadeInHEaven.png" id="1_jh1fr"]
+[ext_resource type="Script" uid="uid://drnjl8rkaxyyy" path="res://Script/Resources/Skills/skill_madeinheaven.gd" id="1_wn17k"]
+
+[resource]
+script = ExtResource("1_wn17k")
+skill_name = "Self Clock Acceleration"
+description = "Make you go faster and faster"
+icon = ExtResource("1_jh1fr")
+cast_cooldown = 6
+rest_cooldown = 20
+metadata/_custom_type_script = "uid://drnjl8rkaxyyy"

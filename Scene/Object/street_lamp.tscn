@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://pgg2tycic42m"]
+
+[ext_resource type="Texture2D" uid="uid://bvqn00u75g8qf" path="res://Assets/Images/light.png" id="1_omsbr"]
+[ext_resource type="Texture2D" uid="uid://diybiaxkweelg" path="res://Assets/Images/Objects/sStreeLamp.png" id="1_vyucx"]
+
+[node name="StreetLamp" type="Node2D" unique_id=716117601]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2107664588]
+texture = ExtResource("1_vyucx")
+centered = false
+offset = Vector2(-40, -80)
+
+[node name="DirectionalLight2D" type="PointLight2D" parent="." unique_id=1764064549]
+position = Vector2(0, -72)
+texture = ExtResource("1_omsbr")
+texture_scale = 0.5

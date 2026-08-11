@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dgd3qg3mdqrjo"]
+
+[ext_resource type="Script" uid="uid://cblc3yi58gqbe" path="res://Scene/Character/Player/player.gd" id="1_1tc5g"]
+[ext_resource type="Script" uid="uid://dfb0y0ohmabub" path="res://Script/State Machine/node_state_machine.gd" id="1_087al"]
+[ext_resource type="Texture2D" uid="uid://byoucj8kp274f" path="res://Assets/Images/Characters/sRedPandaIdle.png" id="2_1nox1"]
+[ext_resource type="Script" uid="uid://dmjulcqk0s3l1" path="res://Scene/Character/Player/idle_state.gd" id="2_vmgdj"]
+[ext_resource type="Script" uid="uid://fawxl83e4bc8" path="res://Scene/Character/Player/walk_state.gd" id="3_8xcb8"]
+[ext_resource type="Script" uid="uid://dryral4elb6dc" path="res://Scene/Character/Player/attack_state.gd" id="5_bubao"]
+[ext_resource type="Script" uid="uid://cvx0oje7vewj5" path="res://Scene/Character/Player/dodge_state.gd" id="6_1nox1"]
+[ext_resource type="PackedScene" uid="uid://hjjbt8p3x4wr" path="res://Scene/Component/hit_component.tscn" id="8_kvbc0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdskm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1nox1")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdskm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kmjhx"]
+radius = 22.022715
+
+[node name="Player" type="CharacterBody2D" unique_id=480484202]
+script = ExtResource("1_1tc5g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=94835749]
+sprite_frames = SubResource("SpriteFrames_kdskm")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=302076168]
+shape = SubResource("CircleShape2D_kdskm")
+
+[node name="State Machine" type="Node" parent="." unique_id=1907448807 node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("1_087al")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine" unique_id=36902124 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("2_vmgdj")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="Walk" type="Node" parent="State Machine" unique_id=237305343 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("3_8xcb8")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="Attack" type="Node" parent="State Machine" unique_id=916112513 node_paths=PackedStringArray("player", "animated_sprite_2d", "hit_component_collision_shape")]
+script = ExtResource("5_bubao")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+hit_component_collision_shape = NodePath("../../HitComponent/HitComponentCollisionShape")
+
+[node name="Dodge" type="Node" parent="State Machine" unique_id=1395001225 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("6_1nox1")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+speed = 400
+dodge_state_time_interval = 0.2
+
+[node name="HitComponent" parent="." unique_id=1131052984 instance=ExtResource("8_kvbc0")]
+
+[node name="HitComponentCollisionShape" type="CollisionShape2D" parent="HitComponent" unique_id=563949045]
+shape = SubResource("CircleShape2D_kmjhx")
+debug_color = Color(0.6983993, 0.38208362, 0.8013122, 0.41960785)

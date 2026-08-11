@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bsb58jvwiujel"]
+
+[ext_resource type="Theme" uid="uid://b3xrbodd20u5t" path="res://Scene/UI/game_ui_theme.tres" id="1_cf3sr"]
+[ext_resource type="Script" uid="uid://gwu7xayom78s" path="res://Scene/UI/count_down_panel.gd" id="2_eq4w6"]
+
+[node name="CountDownPanel" type="PanelContainer" unique_id=420623034]
+offset_left = -83.0
+offset_bottom = 69.0
+theme = ExtResource("1_cf3sr")
+theme_type_variation = &"AlarmPanel"
+script = ExtResource("2_eq4w6")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1175382018]
+custom_minimum_size = Vector2(72, 48)
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="MarginContainer" unique_id=1044519533]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"AlarmLabel"
+text = "00:00"

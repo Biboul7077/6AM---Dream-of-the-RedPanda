@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://yxhyplhqajcm"]
+
+[ext_resource type="Script" uid="uid://cih2mroeqo8wv" path="res://Scene/UI/skill_panel.gd" id="1_0w8fb"]
+[ext_resource type="Texture2D" uid="uid://kld2bl1er1e4" path="res://Assets/Images/UI/sIconRechargeSpell.png" id="2_gv1n4"]
+
+[node name="SkillPanel" type="PanelContainer" unique_id=216889701]
+offset_right = 56.0
+offset_bottom = 32.0
+script = ExtResource("1_0w8fb")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1136823310]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=548385575]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Spell1" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1536020205]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+button_mask = 2
+expand_icon = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/Spell1" unique_id=638662497]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 77.0
+fill_mode = 4
+texture_progress = ExtResource("2_gv1n4")
+
+[node name="Spell2" type="Button" parent="MarginContainer/HBoxContainer" unique_id=811348132]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+expand_icon = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/Spell2" unique_id=56699033]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 77.0
+fill_mode = 4
+texture_progress = ExtResource("2_gv1n4")
+
+[node name="Spell3" type="Button" parent="MarginContainer/HBoxContainer" unique_id=202386392]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+expand_icon = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/Spell3" unique_id=1727350394]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 77.0
+fill_mode = 4
+texture_progress = ExtResource("2_gv1n4")
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Spell1" to="." method="_on_spell_1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Spell2" to="." method="_on_spell_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Spell3" to="." method="_on_spell_3_pressed"]

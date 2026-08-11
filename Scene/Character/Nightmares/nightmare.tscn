@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://usyq26lqno3i"]
+
+[ext_resource type="Script" uid="uid://cm37pj1ukoudr" path="res://Scene/Character/Nightmares/nightmare.gd" id="1_4l5yk"]
+[ext_resource type="Texture2D" uid="uid://c0aswbot7mjlq" path="res://Assets/Images/Characters/sNightmare.png" id="1_sbwxd"]
+[ext_resource type="PackedScene" uid="uid://7wm2gdltwqh1" path="res://Scene/Component/healthbar_component.tscn" id="2_6gkux"]
+[ext_resource type="PackedScene" uid="uid://do8rifw7unru1" path="res://Scene/Component/hurt_component.tscn" id="4_1ibbd"]
+[ext_resource type="PackedScene" uid="uid://b4lh1400aba7p" path="res://Scene/Component/damage_component.tscn" id="4_6gkux"]
+[ext_resource type="PackedScene" uid="uid://7dpf7cadm6lc" path="res://Scene/Component/aggro_component.tscn" id="6_dp31k"]
+[ext_resource type="Script" uid="uid://dfb0y0ohmabub" path="res://Script/State Machine/node_state_machine.gd" id="6_efeyt"]
+[ext_resource type="PackedScene" uid="uid://hjjbt8p3x4wr" path="res://Scene/Component/hit_component.tscn" id="7_7ep8m"]
+[ext_resource type="Script" uid="uid://dofv6nvljq2x2" path="res://Scene/Character/Nightmares/idle_state.gd" id="7_ifpig"]
+[ext_resource type="Script" uid="uid://bl6o5f1rdigxw" path="res://Scene/Character/Nightmares/chase.gd" id="8_u1ft8"]
+[ext_resource type="Script" uid="uid://7fmi0k5rloc6" path="res://Scene/Character/Nightmares/attack_state.gd" id="11_dp31k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6gkux"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ep8m"]
+radius = 14.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dp31k"]
+points = PackedVector2Array(45, 0, 0, 30, 0, -30)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ibbd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dp31k"]
+radius = 78.00641
+
+[node name="Nightmare" type="CharacterBody2D" unique_id=1762457167]
+y_sort_enabled = true
+collision_layer = 4
+script = ExtResource("1_4l5yk")
+
+[node name="HealthbarComponent" parent="." unique_id=1410572372 node_paths=PackedStringArray("damage_component") instance=ExtResource("2_6gkux")]
+z_index = 999
+offset_left = -15.0
+offset_top = -24.0
+offset_right = 15.0
+offset_bottom = -13.0
+damage_component = NodePath("../DamageComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1114547444]
+texture = ExtResource("1_sbwxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=585285923]
+shape = SubResource("CircleShape2D_6gkux")
+
+[node name="ContactHitComponent" parent="." unique_id=1131052984 instance=ExtResource("7_7ep8m")]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHitComponent" unique_id=1990855978]
+shape = SubResource("CircleShape2D_7ep8m")
+debug_color = Color(0.6185649, 0.35602185, 1, 0.41960785)
+
+[node name="ClawsHitComponent" parent="." unique_id=519650296 instance=ExtResource("7_7ep8m")]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClawsHitComponent" unique_id=1088791976]
+shape = SubResource("ConvexPolygonShape2D_dp31k")
+
+[node name="HurtComponent" parent="." unique_id=638363476 instance=ExtResource("4_1ibbd")]
+collision_layer = 4
+collision_mask = 8
+
+[node name="HurtComponentCollisionShape2D" type="CollisionShape2D" parent="HurtComponent" unique_id=1902749433]
+shape = SubResource("CircleShape2D_1ibbd")
+
+[node name="DamageComponent" parent="." unique_id=557876462 instance=ExtResource("4_6gkux")]
+max_damage = 5
+
+[node name="AggroComponent" parent="." unique_id=1913548347 instance=ExtResource("6_dp31k")]
+collision_layer = 4
+collision_mask = 2
+
+[node name="AggroComponentCollisionShape2D" type="CollisionShape2D" parent="AggroComponent" unique_id=1370877000]
+shape = SubResource("CircleShape2D_dp31k")
+debug_color = Color(0, 0.6442519, 0.29058477, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=868106024 node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("6_efeyt")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=167187729 node_paths=PackedStringArray("aggro_component", "nightmare", "sprite_2d")]
+script = ExtResource("7_ifpig")
+aggro_component = NodePath("../../AggroComponent")
+nightmare = NodePath("../..")
+sprite_2d = NodePath("../../Sprite2D")
+
+[node name="Chase" type="Node" parent="StateMachine" unique_id=1033175129 node_paths=PackedStringArray("nightmare", "sprite_2d", "healthbar_component")]
+script = ExtResource("8_u1ft8")
+nightmare = NodePath("../..")
+sprite_2d = NodePath("../../Sprite2D")
+healthbar_component = NodePath("../../HealthbarComponent")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=2113912368 node_paths=PackedStringArray("hit_component_collision_shape", "nightmare", "sprite_2d")]
+script = ExtResource("11_dp31k")
+hit_component_collision_shape = NodePath("../../ClawsHitComponent/CollisionShape2D")
+nightmare = NodePath("../..")
+sprite_2d = NodePath("../../Sprite2D")

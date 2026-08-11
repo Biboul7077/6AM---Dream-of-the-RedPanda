@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://du6ki33ou2yah"]
+
+[ext_resource type="PackedScene" uid="uid://cvo2vj51n78yy" path="res://Scene/Component/interactable_component.tscn" id="1_3l572"]
+[ext_resource type="Script" uid="uid://cvs5lnkr11u1g" path="res://Scene/Character/ShopKeeper/shop_keeper.gd" id="1_fwh05"]
+[ext_resource type="Texture2D" uid="uid://brm5k1lbgc14y" path="res://Assets/Images/Characters/sShopkeeper.png" id="1_lgtbs"]
+[ext_resource type="Script" uid="uid://bhi2saewn0tcv" path="res://Script/Resources/upgrade_data.gd" id="2_nqpqd"]
+[ext_resource type="Resource" uid="uid://t4heijryrf3u" path="res://Data/Upgrades/speed_upgrade_resource.tres" id="3_52ukd"]
+[ext_resource type="Resource" uid="uid://dyk7d8a7gufym" path="res://Data/Upgrades/damage_upgrade_resource.tres" id="4_fliwi"]
+[ext_resource type="Texture2D" uid="uid://7gfxf3mmb7ed" path="res://Assets/Images/UI/sKeyUI.png" id="4_hqp86"]
+[ext_resource type="Resource" uid="uid://bxfhy7u77ju2k" path="res://Data/Upgrades/recovering_upgrade_resource.tres" id="5_llau1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqp86"]
+size = Vector2(138, 86.5)
+
+[node name="ShopKeeper" type="Node2D" unique_id=337558340]
+script = ExtResource("1_fwh05")
+shop_set = Array[ExtResource("2_nqpqd")]([ExtResource("3_52ukd"), ExtResource("4_fliwi"), ExtResource("5_llau1")])
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1771691498]
+position = Vector2(0, -56)
+texture = ExtResource("1_lgtbs")
+
+[node name="InteractableComponent" parent="." unique_id=1143115441 instance=ExtResource("1_3l572")]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent" unique_id=1669150107]
+position = Vector2(0, -10.25)
+shape = SubResource("RectangleShape2D_hqp86")
+
+[node name="SpriteUI" type="Sprite2D" parent="." unique_id=1571794022]
+visible = false
+position = Vector2(26, -29)
+texture = ExtResource("4_hqp86")

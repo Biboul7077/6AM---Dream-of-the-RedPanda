@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ZaWarudoSkill" format=3 uid="uid://bbnnpf8rnn2oj"]
+
+[ext_resource type="Script" uid="uid://crls8kvey0itn" path="res://Script/Resources/Skills/skill_zawarudo.gd" id="1_7ycc3"]
+[ext_resource type="Texture2D" uid="uid://dhh3jlyxm4kl7" path="res://Assets/Images/UI/sIconZaWarudo.png" id="1_udmnc"]
+
+[resource]
+script = ExtResource("1_7ycc3")
+skill_name = "Unleash The World"
+description = "it stop time"
+icon = ExtResource("1_udmnc")
+cast_cooldown = 6
+rest_cooldown = 20
+energy_cost = 60
+effect_name = "empty"
+metadata/_custom_type_script = "uid://crls8kvey0itn"

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bnq0hq4fcsv3k"]
+
+[ext_resource type="Texture2D" uid="uid://cupk3wch6f0tn" path="res://Assets/Images/Collectables/sKeoCoins.png" id="1_ata7k"]
+[ext_resource type="Script" uid="uid://d7lbyc84ilc4" path="res://Scene/Collectables/keo_coin.gd" id="1_hu4e2"]
+[ext_resource type="PackedScene" uid="uid://ca56aosl0xmj2" path="res://Scene/Component/collectable_component.tscn" id="2_u1d5k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ata7k"]
+radius = 6.0827627
+
+[node name="KeoCoin" type="Sprite2D" unique_id=890039406]
+texture = ExtResource("1_ata7k")
+hframes = 3
+script = ExtResource("1_hu4e2")
+
+[node name="CollectableComponent" parent="." unique_id=132276541 node_paths=PackedStringArray("sprite_2d") instance=ExtResource("2_u1d5k")]
+collision_mask = 2
+collectable_name = "KeoCoin"
+sprite_2d = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent" unique_id=111147557]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_ata7k")
+
+[connection signal="area_exited" from="CollectableComponent" to="." method="_on_collectable_component_area_exited"]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://cg3cj3xx14285"]
+
+[ext_resource type="Texture2D" uid="uid://dhh3jlyxm4kl7" path="res://Assets/Images/UI/sIconZaWarudo.png" id="1_aq1cl"]
+[ext_resource type="Script" uid="uid://bhi2saewn0tcv" path="res://Script/Resources/upgrade_data.gd" id="1_ly6x7"]
+
+[resource]
+script = ExtResource("1_ly6x7")
+upgrade_name = "Longer Chronon Focus"
+description = "+1.25% duration of time stop"
+icon = ExtResource("1_aq1cl")
+rarity = 2
+variable_name = "player_time_stop_duration"
+value = 1.25
+operation = 2
+metadata/_custom_type_script = "uid://bhi2saewn0tcv"
