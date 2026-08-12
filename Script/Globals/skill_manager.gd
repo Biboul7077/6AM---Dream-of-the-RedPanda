@@ -3,18 +3,21 @@ extends Node
 const ZAWARUDO = preload("uid://bbnnpf8rnn2oj")
 const MADEINHEAVEN = preload("uid://dt7pwqyp4ydhq")
 const KILLERQUEEN = preload("uid://cbchbnydjt1ef")
+const NOSKILL = preload("uid://g3cfufofkf58")
 
 signal cast_started(skill: Skill)
 signal cast_finished(skill: Skill)
 signal cast_failed(skill: Skill, reason: String)
 signal cooldown_updated(skill: Skill, time_remaining: float)
 
-@export var current_skill_list: Array[Skill] = [ZAWARUDO,MADEINHEAVEN,KILLERQUEEN]
+@export var current_skill_list: Array[Skill] = StatisticsManager.player_skills
 @export var recharging: Dictionary = {}
 
 var is_casting: bool = false
 var current_skill: Skill = null
 
+func _ready() -> void:
+	print(current_skill_list)
 
 func _process(delta: float) -> void:
 	for skill in recharging.keys().duplicate():

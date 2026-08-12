@@ -17,7 +17,7 @@ func _on_process(_delta: float) -> void:
 	pass
 
 func _on_physics_process(delta: float) -> void:
-	chase_speed = GameManager.enemy_speed
+	chase_speed = StatisticsManager.enemy_speed
 	
 	var target = nightmare.target
 	if target == null:

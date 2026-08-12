@@ -2,7 +2,7 @@ extends PanelContainer
 @onready var spell_1: Button = $MarginContainer/HBoxContainer/Spell1
 @onready var spell_2: Button = $MarginContainer/HBoxContainer/Spell2
 @onready var spell_3: Button = $MarginContainer/HBoxContainer/Spell3
-var skill_list = SkillManager.current_skill_list
+var skill_list = [null,null,null]
 
 func _ready() -> void:
 	if skill_list[0] != null:

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b2o3b3ejt8n4r" path="res://Assets/Images/UI/sEnergyBarBackground.png" id="4_i1spv"]
 [ext_resource type="Texture2D" uid="uid://difo6021vijjy" path="res://Assets/Images/UI/sHealthbarFill.png" id="5_g4v6p"]
 [ext_resource type="Texture2D" uid="uid://4tdr4ithiaij" path="res://Assets/Images/UI/sEnergyBarFill.png" id="5_swuej"]
+[ext_resource type="Texture2D" uid="uid://c8q6xpnm2tw6f" path="res://Assets/Images/UI/slider_cursor.png" id="8_1j0vk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qc3n8"]
 texture = ExtResource("2_qc3n8")
@@ -133,6 +134,17 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 region_rect = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nd53"]
+atlas = ExtResource("8_1j0vk")
+region = Rect2(1, 1, 14, 14)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rkj8y"]
+load_path = "res://.godot/imported/slider_cursor.png-4d6b4b0ad950ac96bfc9588e76d00920.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mb17"]
+atlas = SubResource("CompressedTexture2D_rkj8y")
+region = Rect2(17, 1, 14, 14)
+
 [resource]
 AlarmLabel/base_type = &"Label"
 AlarmLabel/font_sizes/font_size = 32
@@ -161,3 +173,6 @@ TexturEnergybar/styles/fill = SubResource("StyleBoxTexture_8mb17")
 TextureHealthbar/base_type = &"ProgressBar"
 TextureHealthbar/styles/background = SubResource("StyleBoxTexture_swuej")
 TextureHealthbar/styles/fill = SubResource("StyleBoxTexture_1j0vk")
+VolumeHSlider/base_type = &"HSlider"
+VolumeHSlider/icons/grabber = SubResource("AtlasTexture_0nd53")
+VolumeHSlider/icons/grabber_highlight = SubResource("AtlasTexture_8mb17")

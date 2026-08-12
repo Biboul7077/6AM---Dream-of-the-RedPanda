@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_ly6x7")
 upgrade_name = "Longer Chronon Focus"
-description = "+1.25% duration of time stop"
+description = "+25% duration of time stop"
 icon = ExtResource("1_aq1cl")
-rarity = 2
+rarity = 3
 variable_name = "player_time_stop_duration"
 value = 1.25
 operation = 2

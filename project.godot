@@ -16,15 +16,19 @@ run/main_scene="uid://b14lugt2ladmn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://c40tlwo4lk5q1"
+
 [autoload]
 
-TimeManager="*uid://cyieeh3ys50li"
+StatisticsManager="*uid://b4cdndenbwwn6"
 GameManager="*uid://rnduhe1jkdd8"
+TimeManager="*uid://cyieeh3ys50li"
 SceneManager="*uid://c06qbrdwfq5ti"
 InventoryManager="*uid://cwjlyhrn5kifc"
 SkillManager="*uid://ct0kd0bthedfx"
 UpgradeManager="*uid://e573l4wd3mfs"
-StatisticsManager="*uid://b4cdndenbwwn6"
 
 [display]
 
@@ -36,9 +40,10 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://Assets/": "orange",
+"res://Assets/Sounds/": "red",
 "res://Assets/Tileset/": "yellow",
 "res://Data/": "blue",
-"res://Export/": "red",
+"res://Export/": "pink",
 "res://Scene/": "green",
 "res://Scene/Level/": "teal",
 "res://Scene/Test/": "teal",

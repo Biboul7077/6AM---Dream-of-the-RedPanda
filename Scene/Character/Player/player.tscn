@@ -12,8 +12,8 @@
 [ext_resource type="Script" uid="uid://cr8nevrartx1f" path="res://Scene/Character/Player/locked_state.gd" id="11_b4qd8"]
 [ext_resource type="PackedScene" uid="uid://b6tdrpkni3y3u" path="res://Scene/Object/weapon.tscn" id="11_mbl8b"]
 [ext_resource type="PackedScene" uid="uid://do8rifw7unru1" path="res://Scene/Component/hurt_component.tscn" id="12_mbl8b"]
-[ext_resource type="AudioStream" uid="uid://ctygblore0y4i" path="res://Assets/Sounds/sndSkillTimestop.mp3" id="14_revbx"]
-[ext_resource type="AudioStream" uid="uid://dk323v1kanciq" path="res://Assets/Sounds/sndHitPlayer.wav" id="15_bdeum"]
+[ext_resource type="AudioStream" uid="uid://ctygblore0y4i" path="res://Assets/Sounds/SFX/sndSkillTimestop.mp3" id="14_revbx"]
+[ext_resource type="AudioStream" uid="uid://dk323v1kanciq" path="res://Assets/Sounds/SFX/sndHitPlayer.wav" id="15_bdeum"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_revbx"]
 atlas = ExtResource("2_b4qd8")

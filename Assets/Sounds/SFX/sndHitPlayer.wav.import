@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dk323v1kanciq"
-path="res://.godot/imported/sndHitPlayer.wav-6e62b8d836f2cb4adc300e98df8cce9a.sample"
+path="res://.godot/imported/sndHitPlayer.wav-bf6b4d98297b2de1d39dc6e332b9fb78.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/sndHitPlayer.wav"
-dest_files=["res://.godot/imported/sndHitPlayer.wav-6e62b8d836f2cb4adc300e98df8cce9a.sample"]
+source_file="res://Assets/Sounds/SFX/sndHitPlayer.wav"
+dest_files=["res://.godot/imported/sndHitPlayer.wav-bf6b4d98297b2de1d39dc6e332b9fb78.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://1xtkopt2a6rn"
-path="res://.godot/imported/sndBuyUpgrade.wav-7aaacbc8d286a4e81c019426ad1df26c.sample"
+path="res://.godot/imported/sndBuyUpgrade.wav-57d5d3183384133c8d7a23aff386ea09.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/sndBuyUpgrade.wav"
-dest_files=["res://.godot/imported/sndBuyUpgrade.wav-7aaacbc8d286a4e81c019426ad1df26c.sample"]
+source_file="res://Assets/Sounds/SFX/sndBuyUpgrade.wav"
+dest_files=["res://.godot/imported/sndBuyUpgrade.wav-57d5d3183384133c8d7a23aff386ea09.sample"]
 
 [params]
 

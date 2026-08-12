@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://c7g7nfcq73c65"]
+
+[ext_resource type="Script" uid="uid://bhi2saewn0tcv" path="res://Script/Resources/upgrade_data.gd" id="1_rjore"]
+
+[resource]
+script = ExtResource("1_rjore")
+upgrade_name = "1-Hour slip"
+description = "Buy yourself 1 hour of time"
+rarity = 2
+metadata/_custom_type_script = "uid://bhi2saewn0tcv"

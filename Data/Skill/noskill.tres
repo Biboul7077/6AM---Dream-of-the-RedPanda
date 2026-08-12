@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://g3cfufofkf58"]
+
+[ext_resource type="Script" uid="uid://dkbyf81t0kxh6" path="res://Script/Resources/skill_data.gd" id="1_6kwb7"]
+[ext_resource type="Texture2D" uid="uid://n6yu5ccwrr72" path="res://Assets/Images/UI/sIconNoSpell.png" id="1_ctjkk"]
+
+[resource]
+script = ExtResource("1_6kwb7")
+skill_name = "No Skill"
+description = "when you have no skill, you have the noskill skill"
+icon = ExtResource("1_ctjkk")
+metadata/_custom_type_script = "uid://dkbyf81t0kxh6"

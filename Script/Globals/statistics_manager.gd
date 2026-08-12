@@ -1,5 +1,7 @@
 extends Node
 
+const NOSKILL = preload("uid://g3cfufofkf58")
+
 @export_group("Player Stats")
 @export var player_damage: int
 @export var player_speed: float
@@ -17,7 +19,7 @@ func initialize_statistic():
 	player_damage = 1
 	player_recovery_time = 5.0
 	player_speed = 120
-	player_skills = []
+	player_skills = [NOSKILL,NOSKILL,NOSKILL]
 	player_speed_boost = 1.0
 	player_killer_queen_damage = 3.0
 	player_time_stop_duration = 15.0

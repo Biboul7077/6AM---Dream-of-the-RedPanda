@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dhi6d4s2ggj2u" path="res://Scene/Level/level_1.tscn" id="2_i64o6"]
 [ext_resource type="Texture2D" uid="uid://bvqn00u75g8qf" path="res://Assets/Images/light.png" id="3_4kvl3"]
 [ext_resource type="PackedScene" uid="uid://w5pfg3blh370" path="res://Scene/UI/shop_screen.tscn" id="5_k2rys"]
-[ext_resource type="AudioStream" uid="uid://dljdjee8mgixr" path="res://Assets/Sounds/AmbientMusicCalm.mp3" id="5_lee88"]
-[ext_resource type="AudioStream" uid="uid://dyq1pfpdkbphd" path="res://Assets/Sounds/AmbientMusicFight.mp3" id="6_1d8q1"]
+[ext_resource type="AudioStream" uid="uid://dljdjee8mgixr" path="res://Assets/Sounds/Music/AmbientMusicCalm.mp3" id="5_lee88"]
+[ext_resource type="AudioStream" uid="uid://dyq1pfpdkbphd" path="res://Assets/Sounds/Music/AmbientMusicFight.mp3" id="6_1d8q1"]
 [ext_resource type="Script" uid="uid://ddx7biwgwda24" path="res://Scene/music.gd" id="7_1d8q1"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_k2rys"]
@@ -51,4 +51,5 @@ visible = false
 [node name="Music" type="AudioStreamPlayer" parent="GameRoot" unique_id=1140516468]
 stream = SubResource("AudioStreamSynchronized_k2rys")
 autoplay = true
+bus = &"Music"
 script = ExtResource("7_1d8q1")

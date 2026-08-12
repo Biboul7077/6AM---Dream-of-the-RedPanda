@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ct327dyrf385" path="res://Scene/Object/weapon.gd" id="1_0h2j8"]
 [ext_resource type="PackedScene" uid="uid://hjjbt8p3x4wr" path="res://Scene/Component/hit_component.tscn" id="1_mhv62"]
 [ext_resource type="Texture2D" uid="uid://tjfybv7lgmku" path="res://Assets/Images/Objects/sPlayerSword.png" id="2_kdoil"]
-[ext_resource type="AudioStream" uid="uid://c5mw0k3ut0wcd" path="res://Assets/Sounds/sndHitEnemy.wav" id="4_kqfxa"]
+[ext_resource type="AudioStream" uid="uid://c5mw0k3ut0wcd" path="res://Assets/Sounds/SFX/sndHitEnemy.wav" id="4_kqfxa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdoil"]
 radius = 6.0
@@ -32,5 +32,6 @@ debug_color = Color(0.58104634, 0.38299432, 1, 0.41960785)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1260178364]
 stream = ExtResource("4_kqfxa")
+bus = &"SFX"
 
 [connection signal="body_entered" from="SwingPivot/HitComponent" to="." method="_on_hit_component_body_entered"]

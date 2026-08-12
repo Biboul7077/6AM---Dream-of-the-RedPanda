@@ -42,7 +42,7 @@ func attack() -> void:
 	if is_attacking:
 		return
 	is_attacking = true
-	hit_component.hit_damage = GameManager.player_damage
+	hit_component.hit_damage = StatisticsManager.player_damage
 	attack_started.emit()
 	
 	rotation = _get_target_angle()

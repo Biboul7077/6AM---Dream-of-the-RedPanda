@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dlccfy3u20o4o"
-path="res://.godot/imported/sndCollectCoin.wav-4baab36f6e54bab0b66839d1f16233fc.sample"
+path="res://.godot/imported/sndCollectCoin.wav-67d96e8455537804ddc894622a888625.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/sndCollectCoin.wav"
-dest_files=["res://.godot/imported/sndCollectCoin.wav-4baab36f6e54bab0b66839d1f16233fc.sample"]
+source_file="res://Assets/Sounds/SFX/sndCollectCoin.wav"
+dest_files=["res://.godot/imported/sndCollectCoin.wav-67d96e8455537804ddc894622a888625.sample"]
 
 [params]
 

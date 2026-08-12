@@ -50,7 +50,6 @@ func recalculate_time() -> void:
 	
 	
 	if minute == initial_minute and hour != initial_hour and !difficulty_changed:
-		GameManager.increase_diffuclty()
 		difficulty_changed = true
 	
 	if minute == initial_minute + 2 and hour != initial_hour:

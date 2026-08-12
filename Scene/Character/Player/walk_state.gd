@@ -16,7 +16,7 @@ func _on_process(_delta : float) -> void:
 
 
 func _on_physics_process(_delta : float) -> void:
-	speed = GameManager.player_speed * GameManager.player_speed_boost
+	speed = StatisticsManager.player_speed * StatisticsManager.player_speed_boost
 	direction = GameInputEvents.movement_input()
 	
 	if direction != Vector2.ZERO:
