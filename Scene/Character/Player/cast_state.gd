@@ -43,5 +43,4 @@ func _on_cast_finished(_s: Skill) -> void:
  
  
 func _on_cast_failed(skill: Skill, reason: String) -> void:
-	print("cast failed succesfully")
 	transition.emit("Idle")

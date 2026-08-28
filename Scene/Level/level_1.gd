@@ -23,14 +23,10 @@ var level_dimension: Vector2i = room_dimension * dimensions
 
 
 func _ready() -> void:
-	print("ready sur instance: ", get_instance_id())
-	print(level_dimension)
 	initialize_level()
 	place_starting_room()
 	generate_path(start,critical_path_length, "C")
 	generate_branches()
-	print(level)
-	print(connections)
 	generate_rooms()
 
 
@@ -141,18 +137,6 @@ func set_connection(a: Vector2i, b: Vector2i, add: bool) -> void:
 	else:
 		connections[a.x][a.y] &= ~dir_a
 		connections[b.x][b.y] &= ~dir_b
-
-
-func print_level() -> void:
-	var level_as_string: String = ""
-	for y in range(dimensions.y - 1, -1, -1):
-		for x in dimensions.x:
-			if level[x][y]:
-				level_as_string += "[" + str(level[x][y]) + "]"
-			else:
-				level_as_string += "   "
-		level_as_string += '\n'
-	print(level_as_string)
 
 
 func generate_rooms() -> void:

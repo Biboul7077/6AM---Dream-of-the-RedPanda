@@ -37,3 +37,8 @@ func _on_quit_game_button_pressed() -> void:
 func _exit_tree() -> void:
 	audio_stream_player.stop()
 	TimeManager.timestop = false
+
+
+func _on_back_to_main_menu_game_button_pressed() -> void:
+	options_menu_margin_container.visible = false
+	main_menu_margin_container.visible = true

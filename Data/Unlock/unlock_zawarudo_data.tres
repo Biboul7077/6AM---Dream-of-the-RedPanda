@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SkillUnlock" format=3 uid="uid://bnsugu8ta0y81"]
+
+[ext_resource type="Texture2D" uid="uid://dhh3jlyxm4kl7" path="res://Assets/Images/UI/sIconZaWarudo.png" id="1_afwiv"]
+[ext_resource type="Script" uid="uid://c88uh1ye1hqdf" path="res://Script/Resources/Shop Items/unlock_skill_data.gd" id="1_jlg76"]
+[ext_resource type="Resource" uid="uid://bbnnpf8rnn2oj" path="res://Data/Skill/zawarudo.tres" id="2_bh4kw"]
+
+[resource]
+script = ExtResource("1_jlg76")
+skill = ExtResource("2_bh4kw")
+item_name = "Chronon Focus"
+description = "An ancient spell that allows the user to stop the flow of time for a short moment"
+icon = ExtResource("1_afwiv")
+rarity = 2
+price = 5
+metadata/_custom_type_script = "uid://c88uh1ye1hqdf"

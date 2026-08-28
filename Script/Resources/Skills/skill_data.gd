@@ -12,5 +12,5 @@ extends Resource
 @export var cast_cooldown: int
 @export var rest_cooldown: int
 
-func executer(caster: Node, target = null) -> void:
+func executer(_caster: Node, _target = null) -> void:
 	push_warning("Spell.executer() n'a pas été implémenté pour : " + skill_name)

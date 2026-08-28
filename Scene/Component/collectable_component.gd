@@ -12,7 +12,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var coin: Node = get_parent()
-		collectable_audio.reparent(get_tree().current_scene)
+		collectable_audio.reparent(get_parent().get_parent())
 		collectable_audio.play()
 		collectable_audio.finished.connect(collectable_audio.queue_free)
 		

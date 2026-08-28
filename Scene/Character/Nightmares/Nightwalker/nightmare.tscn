@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://usyq26lqno3i"]
 
-[ext_resource type="Script" uid="uid://cm37pj1ukoudr" path="res://Scene/Character/Nightmares/nightmare.gd" id="1_4l5yk"]
+[ext_resource type="Script" uid="uid://cm37pj1ukoudr" path="res://Scene/Character/Nightmares/Nightwalker/nightmare.gd" id="1_4l5yk"]
 [ext_resource type="Texture2D" uid="uid://c0aswbot7mjlq" path="res://Assets/Images/Characters/sNightmare.png" id="1_sbwxd"]
 [ext_resource type="PackedScene" uid="uid://7wm2gdltwqh1" path="res://Scene/Component/healthbar_component.tscn" id="2_6gkux"]
 [ext_resource type="PackedScene" uid="uid://do8rifw7unru1" path="res://Scene/Component/hurt_component.tscn" id="4_1ibbd"]
@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://7dpf7cadm6lc" path="res://Scene/Component/aggro_component.tscn" id="6_dp31k"]
 [ext_resource type="Script" uid="uid://dfb0y0ohmabub" path="res://Script/State Machine/node_state_machine.gd" id="6_efeyt"]
 [ext_resource type="PackedScene" uid="uid://hjjbt8p3x4wr" path="res://Scene/Component/hit_component.tscn" id="7_7ep8m"]
-[ext_resource type="Script" uid="uid://dofv6nvljq2x2" path="res://Scene/Character/Nightmares/idle_state.gd" id="7_ifpig"]
-[ext_resource type="Script" uid="uid://bl6o5f1rdigxw" path="res://Scene/Character/Nightmares/chase.gd" id="8_u1ft8"]
-[ext_resource type="Script" uid="uid://7fmi0k5rloc6" path="res://Scene/Character/Nightmares/attack_state.gd" id="11_dp31k"]
+[ext_resource type="Script" uid="uid://dofv6nvljq2x2" path="res://Scene/Character/Nightmares/Nightwalker/idle_state.gd" id="7_ifpig"]
+[ext_resource type="Script" uid="uid://bl6o5f1rdigxw" path="res://Scene/Character/Nightmares/Nightwalker/chase.gd" id="8_u1ft8"]
+[ext_resource type="Script" uid="uid://7fmi0k5rloc6" path="res://Scene/Character/Nightmares/Nightwalker/attack_state.gd" id="11_dp31k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gkux"]
 radius = 6.0
@@ -26,7 +26,7 @@ points = PackedVector2Array(45, 0, 0, 30, 0, -30)
 [sub_resource type="CircleShape2D" id="CircleShape2D_dp31k"]
 radius = 78.00641
 
-[node name="Nightmare" type="CharacterBody2D" unique_id=1762457167]
+[node name="Nightwalker" type="CharacterBody2D" unique_id=1762457167]
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_4l5yk")

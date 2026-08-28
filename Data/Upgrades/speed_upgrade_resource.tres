@@ -1,14 +1,15 @@
 [gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://t4heijryrf3u"]
 
 [ext_resource type="Texture2D" uid="uid://3cubq0xm2t7p" path="res://Assets/Images/UI/sIconSpeedUpgrade.png" id="1_qs6t2"]
-[ext_resource type="Script" uid="uid://bhi2saewn0tcv" path="res://Script/Resources/upgrade_data.gd" id="2_1ma4k"]
+[ext_resource type="Script" uid="uid://bhi2saewn0tcv" path="res://Script/Resources/Shop Items/upgrade_data.gd" id="2_qs6t2"]
 
 [resource]
-script = ExtResource("2_1ma4k")
-upgrade_name = "Path of the Beast"
-description = "+20% Movement Speed"
-icon = ExtResource("1_qs6t2")
+script = ExtResource("2_qs6t2")
 variable_name = "player_speed"
 value = 1.2
 operation = 2
+item_name = "Way of the Beast"
+description = "+20% Movement Speed"
+icon = ExtResource("1_qs6t2")
+price = 10
 metadata/_custom_type_script = "uid://bhi2saewn0tcv"

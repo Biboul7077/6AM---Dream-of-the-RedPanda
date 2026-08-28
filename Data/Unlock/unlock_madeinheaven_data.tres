@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillUnlock" format=3 uid="uid://bof6qrthuwlb7"]
+
+[ext_resource type="Texture2D" uid="uid://bvk5wyevdocuc" path="res://Assets/Images/UI/sIconMadeInHEaven.png" id="1_08tl7"]
+[ext_resource type="Script" uid="uid://c88uh1ye1hqdf" path="res://Script/Resources/Shop Items/unlock_skill_data.gd" id="1_ek87r"]
+[ext_resource type="Resource" uid="uid://dt7pwqyp4ydhq" path="res://Data/Skill/madeinheaven.tres" id="3_d66fk"]
+
+[resource]
+script = ExtResource("1_ek87r")
+skill = ExtResource("3_d66fk")
+item_name = "Speed Pump"
+description = "A spell that allows the user to pump some chronon in aim to increase temporarily their speed"
+icon = ExtResource("1_08tl7")
+price = 5
+metadata/_custom_type_script = "uid://c88uh1ye1hqdf"

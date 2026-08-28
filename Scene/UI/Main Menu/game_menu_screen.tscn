@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://b14lugt2ladmn"]
 
 [ext_resource type="Theme" uid="uid://b3xrbodd20u5t" path="res://Scene/UI/game_ui_theme.tres" id="1_7uf0k"]
-[ext_resource type="Script" uid="uid://dl4w1mecakiqd" path="res://Scene/UI/game_menu_screen.gd" id="1_bafkq"]
+[ext_resource type="Script" uid="uid://dl4w1mecakiqd" path="res://Scene/UI/Main Menu/game_menu_screen.gd" id="1_bafkq"]
 [ext_resource type="Texture2D" uid="uid://dwn5gsbv65jpc" path="res://Assets/Images/Titlescreens/sTitlescreen_Gameover_YouMadeIt.png" id="3_1slke"]
 [ext_resource type="Texture2D" uid="uid://cxpugx0n4awa3" path="res://Assets/Images/Titlescreens/sTitlescreen_Gameover_YouDidntMakeIt.png" id="4_hwph3"]
 [ext_resource type="AudioStream" uid="uid://dgeixmmw4m4b3" path="res://Assets/Sounds/Music/MainMenu.mp3" id="4_pl3cw"]
 [ext_resource type="Texture2D" uid="uid://c3vt2qsh2yxbr" path="res://Assets/Images/Titlescreens/sTitlescreen_v5.png" id="6_1umql"]
-[ext_resource type="Script" uid="uid://deqms60sfuonf" path="res://Scene/UI/volume_h_slider.gd" id="6_stikg"]
+[ext_resource type="Script" uid="uid://deqms60sfuonf" path="res://Scene/UI/Main Menu/volume_h_slider.gd" id="6_stikg"]
 [ext_resource type="AudioStream" uid="uid://dlccfy3u20o4o" path="res://Assets/Sounds/SFX/sndCollectCoin.wav" id="7_stikg"]
-[ext_resource type="Script" uid="uid://blvb2wiuy7rn0" path="res://Scene/UI/test_sound_button.gd" id="7_u5lyg"]
+[ext_resource type="Script" uid="uid://blvb2wiuy7rn0" path="res://Scene/UI/Main Menu/test_sound_button.gd" id="7_u5lyg"]
+[ext_resource type="Script" uid="uid://cop3un0obr0xr" path="res://Scene/UI/fullscreen_check_button.gd" id="9_sogvh"]
 
 [node name="GameMenuScreen" type="CanvasLayer" unique_id=463177816]
 script = ExtResource("1_bafkq")
@@ -91,6 +92,7 @@ text = "QUIT
 "
 
 [node name="OptionsMenuMarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=662707801]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -171,18 +173,22 @@ value = 1.0
 script = ExtResource("6_stikg")
 audio_bus_name = "Music"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer" unique_id=1027301866]
+[node name="FullScreenHBoxContainer" type="HBoxContainer" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer" unique_id=1027301866]
 custom_minimum_size = Vector2(212, 0)
 layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 64
 
-[node name="Label" type="Label" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/HBoxContainer" unique_id=758184981]
+[node name="Label" type="Label" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/FullScreenHBoxContainer" unique_id=758184981]
 custom_minimum_size = Vector2(112, 0)
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/HBoxContainer" unique_id=1872567855]
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/FullScreenHBoxContainer" unique_id=1872567855]
 layout_mode = 2
 size_flags_horizontal = 8
+button_pressed = true
+script = ExtResource("9_sogvh")
 
 [node name="BackToMainMenuGameButton" type="Button" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer" unique_id=907016420]
 custom_minimum_size = Vector2(176, 58)
@@ -202,3 +208,5 @@ parameters/looping = true
 [connection signal="value_changed" from="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/SFXVolumeHBoxContainer/HSlider" to="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/SFXVolumeHBoxContainer/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/SFXVolumeHBoxContainer/TestSoundButton" to="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/SFXVolumeHBoxContainer/TestSoundButton" method="_on_pressed"]
 [connection signal="value_changed" from="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/MusicVolumeHBoxContainer/HSlider" to="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/MusicVolumeHBoxContainer/HSlider" method="_on_value_changed"]
+[connection signal="toggled" from="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/FullScreenHBoxContainer/CheckButton" to="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/FullScreenHBoxContainer/CheckButton" method="_on_toggled"]
+[connection signal="pressed" from="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/BackToMainMenuGameButton" to="." method="_on_back_to_main_menu_game_button_pressed"]

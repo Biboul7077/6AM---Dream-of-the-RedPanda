@@ -38,7 +38,7 @@ func _on_next_transitions() -> void:
 
 func _on_enter() -> void:
 	audio_stream_player_2d.play()
-	knocked_out_state_time_interval = StatisticsManager.player_recovery_time
+	knocked_out_state_time_interval = GameManager.player_recovery_time
 	animated_sprite_2d.play("KnockedOut")
 	initial_position = player.global_position
 	knocked_out_state_timeout = false

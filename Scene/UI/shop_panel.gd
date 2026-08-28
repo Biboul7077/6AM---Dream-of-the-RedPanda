@@ -5,7 +5,7 @@ extends PanelContainer
 @onready var upgrade_3: Button = $MarginContainer/HBoxContainer/Upgrade3
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
-@export var shop_set: Array[Upgrade] = [null,null,null]
+@export var shop_set: Array[ShopItem] = [null, null, null]
 
 var color_array: Array[Color] = [
 	Color(255, 180, 50, 1),
@@ -14,75 +14,48 @@ var color_array: Array[Color] = [
 	Color("8b72b7ff"),
 	Color("ce7f24ff")
 	]
-var money := 0
 
 func _process(delta: float) -> void:
 	shop_set = UpgradeManager.current_shop
-	if shop_set[0] != null:
-		upgrade_1.get_node("MarginContainer/VBoxContainer/MarginContainer/LabelEffect").text = shop_set[0].upgrade_name
-		upgrade_1.get_node("MarginContainer/VBoxContainer/MarginContainer/LabelEffect").add_theme_color_override("font_color",color_array[shop_set[0].rarity])
-		upgrade_1.get_node("MarginContainer/VBoxContainer/TextureRect").texture = shop_set[0].icon
-		upgrade_1.get_node("MarginContainer/VBoxContainer/LabelPrice").text = shop_set[0].description
-	if shop_set[1] != null:
-		upgrade_2.get_node("MarginContainer/VBoxContainer/MarginContainer/LabelEffect").text = shop_set[1].upgrade_name
-		upgrade_2.get_node("MarginContainer/VBoxContainer/MarginContainer/LabelEffect").add_theme_color_override("font_color",color_array[shop_set[1].rarity])
-		upgrade_2.get_node("MarginContainer/VBoxContainer/TextureRect").texture = shop_set[1].icon
-		upgrade_2.get_node("MarginContainer/VBoxContainer/LabelPrice").text = shop_set[1].description
-	if shop_set[2] != null:
-		upgrade_3.get_node("MarginContainer/VBoxContainer/MarginContainer/LabelEffect").text = shop_set[2].upgrade_name
-		upgrade_3.get_node("MarginContainer/VBoxContainer/MarginContainer/LabelEffect").add_theme_color_override("font_color",color_array[shop_set[2].rarity])
-		upgrade_3.get_node("MarginContainer/VBoxContainer/TextureRect").texture = shop_set[2].icon
-		upgrade_3.get_node("MarginContainer/VBoxContainer/LabelPrice").text = shop_set[2].description
+	_update_slot(upgrade_1, shop_set[0])
+	_update_slot(upgrade_2, shop_set[1])
+	_update_slot(upgrade_3, shop_set[2])
+
+
+func _update_slot(button: Button, item: ShopItem) -> void:
+	if item == null:
+		return
+	button.get_node("MarginContainer/VBoxContainer/MarginContainer/LabelEffect").text = item.item_name
+	button.get_node("MarginContainer/VBoxContainer/MarginContainer/LabelEffect").add_theme_color_override("font_color", color_array[item.rarity])
+	button.get_node("MarginContainer/VBoxContainer/TextureRect").texture = item.icon
+	button.get_node("MarginContainer/VBoxContainer/LabelPrice").text = item.description
+	button.disabled = not item.can_be_purchased()
+
+
+func _try_purchase(item: ShopItem) -> void:
+	if item == null:
+		return
+	if not item.can_be_purchased():
+		return
+	if InventoryManager.inventory.get("KeoCoin") == null:
+		return
+
+	var money: int = InventoryManager.inventory["KeoCoin"]
+	if money < item.price:
+		return
+
+	item.apply()
+	InventoryManager.add_collectable("KeoCoin", -item.price)
+	audio_stream_player.play()
 
 
 func _on_upgrade_1_pressed() -> void:
-	if InventoryManager.inventory.get("KeoCoin") != null:
-		money = InventoryManager.inventory["KeoCoin"]
-		var upgrade = shop_set[0]
-		if money >= 40:
-			var current_value = GameManager.get(upgrade.variable_name)
-			var new_value = apply_operation(current_value, upgrade.operation, upgrade.value)
-			GameManager.set(upgrade.variable_name, new_value)
-			InventoryManager.add_collectable("KeoCoin", - 40)
-			audio_stream_player.play()
+	_try_purchase(shop_set[0])
 
 
 func _on_upgrade_2_pressed() -> void:
-	if InventoryManager.inventory.get("KeoCoin") != null:
-		money = InventoryManager.inventory["KeoCoin"]
-		var upgrade = shop_set[1]
-		if money >= 40:
-			var current_value = GameManager.get(upgrade.variable_name)
-			var new_value = apply_operation(current_value, upgrade.operation, upgrade.value)
-			GameManager.set(upgrade.variable_name, new_value)
-			InventoryManager.add_collectable("KeoCoin", - 40)
-			audio_stream_player.play()
+	_try_purchase(shop_set[1])
 
 
 func _on_upgrade_3_pressed() -> void:
-	if InventoryManager.inventory.get("KeoCoin") != null:
-		money = InventoryManager.inventory["KeoCoin"]
-		var upgrade = shop_set[2]
-		if money >= 40:
-			var current_value = GameManager.get(upgrade.variable_name)
-			var new_value = apply_operation(current_value, upgrade.operation, upgrade.value)
-			GameManager.set(upgrade.variable_name, new_value)
-			InventoryManager.add_collectable("KeoCoin", - 40)
-			audio_stream_player.play()
-
-
-func apply_operation(current, op: DataTypes.Operator, value):
-	match op:
-		0:
-			return current + value
-		1:
-			return current - value
-		2:
-			return current * value
-		3:
-			return current / value
-		4:
-			return value
-		_:
-			push_error("Unknown operation: %s" % op)
-			return current
+	_try_purchase(shop_set[2])

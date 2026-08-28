@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cgj11t36v147u"]
 
-[ext_resource type="Script" uid="uid://dep1jluaqyuhp" path="res://Scene/UI/game_menu_screen_background.gd" id="1_qvoin"]
+[ext_resource type="Script" uid="uid://dep1jluaqyuhp" path="res://Scene/UI/Main Menu/game_menu_screen_background.gd" id="1_qvoin"]
 [ext_resource type="Texture2D" uid="uid://dwn5gsbv65jpc" path="res://Assets/Images/Titlescreens/sTitlescreen_Gameover_YouMadeIt.png" id="2_qvoin"]
 
 [node name="GameMenuScreenBackground" type="Node2D" unique_id=1485399452]

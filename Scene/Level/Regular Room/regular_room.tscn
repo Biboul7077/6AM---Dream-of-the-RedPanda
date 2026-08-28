@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpeqpkf7yrfua" path="res://Scene/Level/Regular Room/regular_room.gd" id="1_1rdqg"]
 [ext_resource type="TileSet" uid="uid://dcgooj4t2vqb4" path="res://Assets/Tileset/tileset_game.tres" id="1_lsm8f"]
-[ext_resource type="PackedScene" uid="uid://usyq26lqno3i" path="res://Scene/Character/Nightmares/nightmare.tscn" id="3_3oki7"]
+[ext_resource type="PackedScene" uid="uid://usyq26lqno3i" path="res://Scene/Character/Nightmares/Nightwalker/nightmare.tscn" id="3_3oki7"]
 
 [node name="RegularRoom" type="Node2D" unique_id=798749873]
 y_sort_enabled = true
@@ -52,6 +52,7 @@ tile_map_data = PackedByteArray("AAAFAAEABQAAAAAAAAAGAP7/BQAAAAAAAAAGAAAABQAAAAA
 tile_set = ExtResource("1_lsm8f")
 
 [node name="South" type="Node2D" parent="Doors" unique_id=1640347637]
+visible = false
 y_sort_enabled = true
 
 [node name="Ground" type="TileMapLayer" parent="Doors/South" unique_id=1428609771]
@@ -72,6 +73,7 @@ tile_map_data = PackedByteArray("AAAFAAkABQAAAAAAAAAFAAsABQAAAAAAAAAGAAoABQAAAAA
 tile_set = ExtResource("1_lsm8f")
 
 [node name="East" type="Node2D" parent="Doors" unique_id=817237445]
+visible = false
 y_sort_enabled = true
 
 [node name="Ground" type="TileMapLayer" parent="Doors/East" unique_id=1090316597]

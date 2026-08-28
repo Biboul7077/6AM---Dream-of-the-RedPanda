@@ -10,28 +10,32 @@ signal cast_finished(skill: Skill)
 signal cast_failed(skill: Skill, reason: String)
 signal cooldown_updated(skill: Skill, time_remaining: float)
 
-@export var current_skill_list: Array[Skill] = StatisticsManager.player_skills
+@export var current_skill_list: Array[Skill]
 @export var recharging: Dictionary = {}
 
 var is_casting: bool = false
 var current_skill: Skill = null
 
+
 func _ready() -> void:
-	print(current_skill_list)
+	GameManager.game_started.connect(on_game_started)
+
 
 func _process(delta: float) -> void:
+	print(current_skill_list)
 	for skill in recharging.keys().duplicate():
 		recharging[skill] = max(0.0, recharging[skill] - delta)
 		cooldown_updated.emit(skill, recharging[skill])
 		if recharging[skill] <= 0.0:
 			recharging.erase(skill)
-			print("spell ready")
 
 
 func can_cast(skill: Skill) -> bool:
 	if is_casting:
 		return false
 	if recharging.has(skill):
+		return false
+	if skill.skill_name == "No Skill":
 		return false
 	return true
 
@@ -56,17 +60,19 @@ func cast(caster: Node2D, skill: Skill, target = null) -> bool:
 	
 	skill.executer(caster, target)
 	recharging[skill] = skill.rest_cooldown
-	cooldown_updated.emit(skill, skill.rest_cooldown)  # <-- ajouté
+	cooldown_updated.emit(skill, skill.rest_cooldown)
 	cast_finished.emit(skill)
 	current_skill = null
 	return true
 
 
 func cooldown_reset() -> void:
-	print(recharging)
 	recharging.clear()
-	print(recharging)
 
 
 func recharging_time_remaining(skill: Skill) -> float:
 	return recharging.get(skill, 0.0)
+
+
+func on_game_started() -> void:
+	current_skill_list = GameManager.player_skills

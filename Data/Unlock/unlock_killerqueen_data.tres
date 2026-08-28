@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SkillUnlock" format=3 uid="uid://dfhslgwepssm3"]
+
+[ext_resource type="Script" uid="uid://c88uh1ye1hqdf" path="res://Script/Resources/Shop Items/unlock_skill_data.gd" id="1_63mxb"]
+[ext_resource type="Texture2D" uid="uid://s0b74asvk2et" path="res://Assets/Images/UI/sIconKillerQueen.png" id="1_hynsr"]
+[ext_resource type="Resource" uid="uid://cbchbnydjt1ef" path="res://Data/Skill/killerqueen.tres" id="2_lfl6y"]
+
+[resource]
+script = ExtResource("1_63mxb")
+skill = ExtResource("2_lfl6y")
+item_name = "Pressure"
+description = "A new but unstable spell. It allows you to use a small amount of chronon and, by applying a huge pressure, make it explode"
+icon = ExtResource("1_hynsr")
+rarity = 1
+price = 5
+metadata/_custom_type_script = "uid://c88uh1ye1hqdf"

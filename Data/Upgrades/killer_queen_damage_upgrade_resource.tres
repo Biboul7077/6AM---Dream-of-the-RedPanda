@@ -1,14 +1,15 @@
 [gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://d2gglnsdcn4kv"]
 
 [ext_resource type="Texture2D" uid="uid://s0b74asvk2et" path="res://Assets/Images/UI/sIconKillerQueen.png" id="1_e83mn"]
-[ext_resource type="Script" uid="uid://bhi2saewn0tcv" path="res://Script/Resources/upgrade_data.gd" id="2_o3a27"]
+[ext_resource type="Script" uid="uid://bhi2saewn0tcv" path="res://Script/Resources/Shop Items/upgrade_data.gd" id="2_e83mn"]
 
 [resource]
-script = ExtResource("2_o3a27")
-upgrade_name = "Their time is up"
+script = ExtResource("2_e83mn")
+variable_name = "player_killer_queen_damage"
+value = 1.0
+item_name = "Chronon Pressure"
 description = "+1 Time Bomb damage"
 icon = ExtResource("1_e83mn")
 rarity = 2
-variable_name = "player_killer_queen_damage"
-value = 1.0
+price = 25
 metadata/_custom_type_script = "uid://bhi2saewn0tcv"

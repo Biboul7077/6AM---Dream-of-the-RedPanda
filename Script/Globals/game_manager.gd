@@ -1,6 +1,19 @@
 extends Node
 
+const NOSKILL = preload("uid://g3cfufofkf58")
 
+@export_group("Player Stats")
+@export var player_damage: float
+@export var player_speed: float
+@export var player_recovery_time: float
+@export var player_speed_boost: float
+@export var player_time_stop_duration: float
+@export var player_killer_queen_damage: float
+@export var player_skills: Array[Skill]
+
+@export_group("Enemy Stats")
+@export var enemy_speed: float
+@export var enemy_maximum_damage: float
 
 @export_group("Global Variables")
 @export var is_player_detected: bool = false
@@ -10,12 +23,15 @@ extends Node
 var game_menu_screen = preload("uid://b14lugt2ladmn")
 var player_scene_root_path: String = "/root/MainScene/GameRoot/Player"
 
+@warning_ignore("unused_signal")
 signal difficulty_increased
+signal game_started
 
 func start_game() -> void:
+	initialize_statistic()
 	SceneManager.load_main_scene_container()
 	SceneManager.load_level("Level1")
-	StatisticsManager.initialize_statistic()
+	game_started.emit()
 
 func quit_game() -> void:
 	get_tree().quit()
@@ -51,3 +67,14 @@ func find_nearest_enemy(origin: Node2D) -> Node2D:
 			nearest = enemy
 
 	return nearest
+
+func initialize_statistic():
+	player_damage = 1
+	player_recovery_time = 5.0
+	player_speed = 120
+	player_skills = [NOSKILL,NOSKILL,NOSKILL]
+	player_speed_boost = 1.0
+	player_killer_queen_damage = 3.0
+	player_time_stop_duration = 15.0
+	enemy_maximum_damage = 5.0
+	enemy_speed = 110.0

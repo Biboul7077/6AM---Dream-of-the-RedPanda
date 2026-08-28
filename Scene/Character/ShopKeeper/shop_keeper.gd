@@ -2,7 +2,7 @@ extends Node2D
 @onready var interactable_component: InteractableComponent = $InteractableComponent
 @onready var sprite_ui: Sprite2D = $SpriteUI
 
-@export var shop_set: Array[Upgrade] = [null,null,null]
+@export var shop_set: Array[ShopItem] = [null, null, null]
 
 var shop_screen_scene_root:String = "/root/MainScene/GameRoot/ShopScreen"
 var game_screen_scene_root:String = "/root/MainScene/GameRoot/GameScreen"

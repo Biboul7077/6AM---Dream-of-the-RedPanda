@@ -1,14 +1,15 @@
 [gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://dyk7d8a7gufym"]
 
 [ext_resource type="Texture2D" uid="uid://ka60e02nltnb" path="res://Assets/Images/UI/sIconDamageUpgrade.png" id="1_ivv5w"]
-[ext_resource type="Script" uid="uid://bhi2saewn0tcv" path="res://Script/Resources/upgrade_data.gd" id="1_rqcuq"]
+[ext_resource type="Script" uid="uid://bhi2saewn0tcv" path="res://Script/Resources/Shop Items/upgrade_data.gd" id="2_ivv5w"]
 
 [resource]
-script = ExtResource("1_rqcuq")
-upgrade_name = "Extra Damage"
+script = ExtResource("2_ivv5w")
+variable_name = "player_damage"
+value = 1.0
+item_name = "Smithing"
 description = "+1 damage point"
 icon = ExtResource("1_ivv5w")
 rarity = 1
-variable_name = "player_damage"
-value = 1.0
+price = 15
 metadata/_custom_type_script = "uid://bhi2saewn0tcv"

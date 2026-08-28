@@ -17,7 +17,7 @@ func _on_process(_delta: float) -> void:
 	pass
 
 func _on_physics_process(delta: float) -> void:
-	chase_speed = StatisticsManager.enemy_speed
+	chase_speed = GameManager.enemy_speed
 	
 	var target = nightmare.target
 	if target == null:
@@ -45,5 +45,4 @@ func _on_enter() -> void:
 	_attack_timer = 0.0
 
 func _on_exit() -> void:
-	healthbar_component.visible = false
 	nightmare.velocity = Vector2.ZERO
