@@ -2,8 +2,9 @@ extends NodeState
 
 @export var player: Player
 @export var animated_sprite_2d: AnimatedSprite2D
-@export var speed : int = 120
+@export var speed : int = 180
 @export var dodge_state_time_interval : float = 5.0
+@export var hurt_component: CollisionShape2D
 
 @onready var dodge_state_timer : Timer = Timer.new()
 @onready var dodge_state_trail : Line2D = Line2D.new()
@@ -41,11 +42,13 @@ func _on_next_transitions() -> void:
 func _on_enter() -> void:
 	dodge_state_timeout = false
 	dodge_state_timer.start()
+	hurt_component.disabled = true
 
 
 func _on_exit() -> void:
 	dodge_state_timeout = true
 	dodge_state_trail.clear_points()
+	hurt_component.disabled = false
 
 func on_dodge_state_timeout() -> void:
 	dodge_state_timeout = true

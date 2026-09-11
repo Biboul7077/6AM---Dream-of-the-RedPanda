@@ -11,6 +11,10 @@ const NOSKILL = preload("uid://g3cfufofkf58")
 @export var player_killer_queen_damage: float
 @export var player_skills: Array[Skill]
 
+@export_group("Debug Variables")
+@export var player_start_money: int = 0
+@export var shopkeepers: bool = false
+
 @export_group("Enemy Stats")
 @export var enemy_speed: float
 @export var enemy_maximum_damage: float
@@ -27,10 +31,14 @@ var player_scene_root_path: String = "/root/MainScene/GameRoot/Player"
 signal difficulty_increased
 signal game_started
 
+func _ready() -> void:
+	Engine.time_scale = 1.0
+
 func start_game() -> void:
 	initialize_statistic()
 	SceneManager.load_main_scene_container()
 	SceneManager.load_level("Level1")
+	InventoryManager.add_collectable("KeoCoin", GameManager.player_start_money)
 	game_started.emit()
 
 func quit_game() -> void:
@@ -78,3 +86,8 @@ func initialize_statistic():
 	player_time_stop_duration = 15.0
 	enemy_maximum_damage = 5.0
 	enemy_speed = 110.0
+
+func frame_freeze(timescale: float, duration: float) -> void:
+	Engine.time_scale = timescale
+	await get_tree().create_timer(duration, true, false, true).timeout
+	Engine.time_scale = 1.0

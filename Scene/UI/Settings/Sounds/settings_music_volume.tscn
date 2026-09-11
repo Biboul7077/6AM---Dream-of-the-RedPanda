@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://tpsbje3f0o8p"]
+
+[ext_resource type="Script" uid="uid://deqms60sfuonf" path="res://Scene/UI/Settings/Sounds/volume_h_slider.gd" id="1_dy08j"]
+
+[node name="SettingsMusicVolume" type="Control" unique_id=1174349662]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=849466631]
+layout_mode = 0
+offset_right = 216.0
+offset_bottom = 23.0
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=637439732]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Volume Music"
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer" unique_id=1823848252]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+theme_type_variation = &"VolumeHSlider"
+max_value = 1.0
+step = 0.005
+value = 1.0
+script = ExtResource("1_dy08j")
+audio_bus_name = "Music"
+
+[connection signal="value_changed" from="HBoxContainer/HSlider" to="HBoxContainer/HSlider" method="_on_value_changed"]

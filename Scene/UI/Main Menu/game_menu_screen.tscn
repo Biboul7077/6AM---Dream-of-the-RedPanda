@@ -1,15 +1,11 @@
 [gd_scene format=3 uid="uid://b14lugt2ladmn"]
 
-[ext_resource type="Theme" uid="uid://b3xrbodd20u5t" path="res://Scene/UI/game_ui_theme.tres" id="1_7uf0k"]
 [ext_resource type="Script" uid="uid://dl4w1mecakiqd" path="res://Scene/UI/Main Menu/game_menu_screen.gd" id="1_bafkq"]
 [ext_resource type="Texture2D" uid="uid://dwn5gsbv65jpc" path="res://Assets/Images/Titlescreens/sTitlescreen_Gameover_YouMadeIt.png" id="3_1slke"]
 [ext_resource type="Texture2D" uid="uid://cxpugx0n4awa3" path="res://Assets/Images/Titlescreens/sTitlescreen_Gameover_YouDidntMakeIt.png" id="4_hwph3"]
 [ext_resource type="AudioStream" uid="uid://dgeixmmw4m4b3" path="res://Assets/Sounds/Music/MainMenu.mp3" id="4_pl3cw"]
+[ext_resource type="PackedScene" uid="uid://dxj650f7sfyjr" path="res://Scene/UI/Main Menu/game_menu_settings.tscn" id="5_qnx1u"]
 [ext_resource type="Texture2D" uid="uid://c3vt2qsh2yxbr" path="res://Assets/Images/Titlescreens/sTitlescreen_v5.png" id="6_1umql"]
-[ext_resource type="Script" uid="uid://deqms60sfuonf" path="res://Scene/UI/Main Menu/volume_h_slider.gd" id="6_stikg"]
-[ext_resource type="AudioStream" uid="uid://dlccfy3u20o4o" path="res://Assets/Sounds/SFX/sndCollectCoin.wav" id="7_stikg"]
-[ext_resource type="Script" uid="uid://blvb2wiuy7rn0" path="res://Scene/UI/Main Menu/test_sound_button.gd" id="7_u5lyg"]
-[ext_resource type="Script" uid="uid://cop3un0obr0xr" path="res://Scene/UI/fullscreen_check_button.gd" id="9_sogvh"]
 
 [node name="GameMenuScreen" type="CanvasLayer" unique_id=463177816]
 script = ExtResource("1_bafkq")
@@ -40,22 +36,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_hwph3")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1430554277]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_7uf0k")
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+[node name="MainMenuMarginContainer" type="MarginContainer" parent="." unique_id=1314360349]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 1270.0
+offset_bottom = 710.0
 
-[node name="MainMenuMarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=1314360349]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/MainMenuMarginContainer" unique_id=859024230]
+[node name="Label" type="Label" parent="MainMenuMarginContainer" unique_id=859024230]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -65,148 +52,41 @@ theme_override_colors/font_outline_color = Color(0.38039216, 0.15294118, 0.12941
 theme_override_constants/outline_size = 9
 text = "DREAM OF A RED PANDA"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainMenuMarginContainer" unique_id=703815750]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuMarginContainer" unique_id=703815750]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="StartGameButton" type="Button" parent="MarginContainer/MainMenuMarginContainer/VBoxContainer" unique_id=1305937847]
+[node name="StartGameButton" type="Button" parent="MainMenuMarginContainer/VBoxContainer" unique_id=1305937847]
 custom_minimum_size = Vector2(176, 58)
 layout_mode = 2
 theme_type_variation = &"GameMenuButton"
 theme_override_font_sizes/font_size = 18
 text = "START"
 
-[node name="OptionsGameButton" type="Button" parent="MarginContainer/MainMenuMarginContainer/VBoxContainer" unique_id=367417054]
+[node name="OptionsGameButton" type="Button" parent="MainMenuMarginContainer/VBoxContainer" unique_id=367417054]
 custom_minimum_size = Vector2(176, 58)
 layout_mode = 2
 theme_type_variation = &"GameMenuButton"
 theme_override_font_sizes/font_size = 18
 text = "OPTIONS"
 
-[node name="QuitGameButton" type="Button" parent="MarginContainer/MainMenuMarginContainer/VBoxContainer" unique_id=704046412]
+[node name="QuitGameButton" type="Button" parent="MainMenuMarginContainer/VBoxContainer" unique_id=704046412]
 custom_minimum_size = Vector2(176, 58)
 layout_mode = 2
 theme_type_variation = &"GameMenuButton"
 text = "QUIT
 "
 
-[node name="OptionsMenuMarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=662707801]
+[node name="GameMenuSettings" parent="." unique_id=1660122695 instance=ExtResource("5_qnx1u")]
 visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/OptionsMenuMarginContainer" unique_id=538008331]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="MasterVolumeHBoxContainer" type="HBoxContainer" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer" unique_id=1674576871]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/MasterVolumeHBoxContainer" unique_id=1188712251]
-custom_minimum_size = Vector2(112, 0)
-layout_mode = 2
-size_flags_vertical = 0
-text = "Volume"
-
-[node name="HSlider" type="HSlider" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/MasterVolumeHBoxContainer" unique_id=1016433835]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 1
-theme_type_variation = &"VolumeHSlider"
-max_value = 1.0
-step = 0.005
-value = 1.0
-script = ExtResource("6_stikg")
-audio_bus_name = "Master"
-
-[node name="SFXVolumeHBoxContainer" type="HBoxContainer" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer" unique_id=63005388]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/SFXVolumeHBoxContainer" unique_id=584366268]
-custom_minimum_size = Vector2(112, 0)
-layout_mode = 2
-size_flags_vertical = 0
-text = "Volume SFX"
-
-[node name="HSlider" type="HSlider" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/SFXVolumeHBoxContainer" unique_id=1886270934]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 1
-theme_type_variation = &"VolumeHSlider"
-max_value = 1.0
-step = 0.005
-value = 1.0
-script = ExtResource("6_stikg")
-audio_bus_name = "SFX"
-
-[node name="TestSoundButton" type="Button" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/SFXVolumeHBoxContainer" unique_id=71702804 node_paths=PackedStringArray("audio_stream_player_2d")]
-layout_mode = 2
-script = ExtResource("7_u5lyg")
-audio_stream_player_2d = NodePath("AudioStreamPlayer2D")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/SFXVolumeHBoxContainer/TestSoundButton" unique_id=2075756469]
-stream = ExtResource("7_stikg")
-bus = &"SFX"
-
-[node name="MusicVolumeHBoxContainer" type="HBoxContainer" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer" unique_id=1657166242]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/MusicVolumeHBoxContainer" unique_id=876459696]
-custom_minimum_size = Vector2(112, 0)
-layout_mode = 2
-size_flags_vertical = 0
-text = "Volume Music"
-
-[node name="HSlider" type="HSlider" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/MusicVolumeHBoxContainer" unique_id=1115748136]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 1
-theme_type_variation = &"VolumeHSlider"
-max_value = 1.0
-step = 0.005
-value = 1.0
-script = ExtResource("6_stikg")
-audio_bus_name = "Music"
-
-[node name="FullScreenHBoxContainer" type="HBoxContainer" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer" unique_id=1027301866]
-custom_minimum_size = Vector2(212, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 64
-
-[node name="Label" type="Label" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/FullScreenHBoxContainer" unique_id=758184981]
-custom_minimum_size = Vector2(112, 0)
-layout_mode = 2
-text = "Fullscreen"
-
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/FullScreenHBoxContainer" unique_id=1872567855]
-layout_mode = 2
-size_flags_horizontal = 8
-button_pressed = true
-script = ExtResource("9_sogvh")
-
-[node name="BackToMainMenuGameButton" type="Button" parent="MarginContainer/OptionsMenuMarginContainer/VBoxContainer" unique_id=907016420]
-custom_minimum_size = Vector2(176, 58)
-layout_mode = 2
-theme_type_variation = &"GameMenuButton"
-text = "BACK TO MAIN MENU"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=775917613]
 stream = ExtResource("4_pl3cw")
 bus = &"Music"
 parameters/looping = true
 
-[connection signal="pressed" from="MarginContainer/MainMenuMarginContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MainMenuMarginContainer/VBoxContainer/OptionsGameButton" to="." method="_on_options_game_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MainMenuMarginContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
-[connection signal="value_changed" from="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/MasterVolumeHBoxContainer/HSlider" to="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/MasterVolumeHBoxContainer/HSlider" method="_on_value_changed"]
-[connection signal="value_changed" from="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/SFXVolumeHBoxContainer/HSlider" to="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/SFXVolumeHBoxContainer/HSlider" method="_on_value_changed"]
-[connection signal="pressed" from="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/SFXVolumeHBoxContainer/TestSoundButton" to="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/SFXVolumeHBoxContainer/TestSoundButton" method="_on_pressed"]
-[connection signal="value_changed" from="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/MusicVolumeHBoxContainer/HSlider" to="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/MusicVolumeHBoxContainer/HSlider" method="_on_value_changed"]
-[connection signal="toggled" from="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/FullScreenHBoxContainer/CheckButton" to="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/FullScreenHBoxContainer/CheckButton" method="_on_toggled"]
-[connection signal="pressed" from="MarginContainer/OptionsMenuMarginContainer/VBoxContainer/BackToMainMenuGameButton" to="." method="_on_back_to_main_menu_game_button_pressed"]
+[connection signal="pressed" from="MainMenuMarginContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="MainMenuMarginContainer/VBoxContainer/OptionsGameButton" to="." method="_on_options_game_button_pressed"]
+[connection signal="pressed" from="MainMenuMarginContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="exit_options_menu" from="GameMenuSettings" to="." method="_on_game_menu_settings_exit_options_menu"]

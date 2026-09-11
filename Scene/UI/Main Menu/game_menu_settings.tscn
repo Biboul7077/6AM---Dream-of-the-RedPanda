@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dxj650f7sfyjr"]
+
+[ext_resource type="Script" uid="uid://currp66pyyt7e" path="res://Scene/UI/Main Menu/game_menu_settings.gd" id="1_8cujf"]
+[ext_resource type="PackedScene" uid="uid://blg7fa3itimpx" path="res://Scene/UI/Main Menu/settings_tab_container.tscn" id="2_lhq4i"]
+
+[node name="GameMenuSettings" type="Control" unique_id=1660122695]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8cujf")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=242620309]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=373536425]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=367485786]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "OPTIONS MENU"
+
+[node name="SettingsTabContainer" parent="MarginContainer/VBoxContainer" unique_id=1086238985 instance=ExtResource("2_lhq4i")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=136799611]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Exit"

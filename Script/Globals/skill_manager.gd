@@ -22,7 +22,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	print(current_skill_list)
 	for skill in recharging.keys().duplicate():
 		recharging[skill] = max(0.0, recharging[skill] - delta)
 		cooldown_updated.emit(skill, recharging[skill])

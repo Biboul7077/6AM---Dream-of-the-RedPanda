@@ -1,37 +1,11 @@
 [gd_scene format=3 uid="uid://b6tdrpkni3y3u"]
 
-[ext_resource type="Script" uid="uid://ct327dyrf385" path="res://Scene/Object/weapon.gd" id="1_0h2j8"]
-[ext_resource type="PackedScene" uid="uid://hjjbt8p3x4wr" path="res://Scene/Component/hit_component.tscn" id="1_mhv62"]
-[ext_resource type="Texture2D" uid="uid://tjfybv7lgmku" path="res://Assets/Images/Objects/sPlayerSword.png" id="2_kdoil"]
 [ext_resource type="AudioStream" uid="uid://c5mw0k3ut0wcd" path="res://Assets/Sounds/SFX/sndHitEnemy.wav" id="4_kqfxa"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdoil"]
-radius = 6.0
-height = 36.0
-
-[node name="Weapon" type="Node2D" unique_id=1900707609 node_paths=PackedStringArray("swing_pivot", "hit_component_collision_shape_2d")]
-script = ExtResource("1_0h2j8")
-swing_pivot = NodePath("SwingPivot")
-hit_component_collision_shape_2d = NodePath("SwingPivot/HitComponent/CollisionShape2D")
-
-[node name="SwingPivot" type="Node2D" parent="." unique_id=966264249]
-
-[node name="Sprite2D" type="Sprite2D" parent="SwingPivot" unique_id=880149333]
-position = Vector2(33, 0)
-texture = ExtResource("2_kdoil")
-
-[node name="HitComponent" parent="SwingPivot" unique_id=1131052984 instance=ExtResource("1_mhv62")]
-collision_layer = 8
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwingPivot/HitComponent" unique_id=457167817]
-position = Vector2(33, 0)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_kdoil")
-debug_color = Color(0.58104634, 0.38299432, 1, 0.41960785)
+[node name="Weapon" type="Node2D" unique_id=1900707609]
+rotation = 4.4505897
+scale = Vector2(0.8, 0.95)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1260178364]
 stream = ExtResource("4_kqfxa")
 bus = &"SFX"
-
-[connection signal="body_entered" from="SwingPivot/HitComponent" to="." method="_on_hit_component_body_entered"]

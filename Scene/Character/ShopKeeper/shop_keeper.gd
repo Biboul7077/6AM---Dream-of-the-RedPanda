@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if active and Input.is_action_just_pressed("keyInteract"):
 		GameManager.is_shop_opened = true
 		UpgradeManager.current_shop = shop_set

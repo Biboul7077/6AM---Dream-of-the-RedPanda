@@ -11,6 +11,46 @@
 [ext_resource type="Script" uid="uid://dofv6nvljq2x2" path="res://Scene/Character/Nightmares/Nightwalker/idle_state.gd" id="7_ifpig"]
 [ext_resource type="Script" uid="uid://bl6o5f1rdigxw" path="res://Scene/Character/Nightmares/Nightwalker/chase.gd" id="8_u1ft8"]
 [ext_resource type="Script" uid="uid://7fmi0k5rloc6" path="res://Scene/Character/Nightmares/Nightwalker/attack_state.gd" id="11_dp31k"]
+[ext_resource type="Texture2D" uid="uid://54jna8plnucj" path="res://Assets/Images/Particles/red_chronon_particles.png" id="12_6as4o"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fqnds"]
+particle_flag_disable_z = true
+initial_velocity_min = 90.0
+initial_velocity_max = 90.0
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 55.879997
+
+[sub_resource type="Shader" id="Shader_vpe8f"]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+uniform float flash_amount : hint_range(0.0, 1.0) = 0.0;
+uniform bool solid_flash = false;
+
+
+void fragment() {
+	vec4 base = texture(TEXTURE, UV);
+	
+	if (solid_flash) {
+		COLOR = vec4(flash_color.rgb, base.a);
+	}
+	else if (flash_amount > 0.0) {
+		COLOR.rgb = mix(base.rgb, flash_color.rgb, flash_amount);
+		COLOR.a = base.a;
+	}
+	else {
+		COLOR = base;
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vpe8f"]
+resource_local_to_scene = true
+shader = SubResource("Shader_vpe8f")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/flash_amount = 0.0
+shader_parameter/solid_flash = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gkux"]
 radius = 6.0
@@ -22,6 +62,7 @@ radius = 14.0
 points = PackedVector2Array(45, 0, 0, 30, 0, -30)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ibbd"]
+radius = 21.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dp31k"]
 radius = 78.00641
@@ -30,6 +71,16 @@ radius = 78.00641
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_4l5yk")
+
+[node name="ParticlesDamage" type="GPUParticles2D" parent="." unique_id=396549655]
+emitting = false
+amount = 6
+texture = ExtResource("12_6as4o")
+lifetime = 0.33
+one_shot = true
+explosiveness = 0.9
+randomness = 0.2
+process_material = SubResource("ParticleProcessMaterial_fqnds")
 
 [node name="HealthbarComponent" parent="." unique_id=1410572372 node_paths=PackedStringArray("damage_component") instance=ExtResource("2_6gkux")]
 z_index = 999
@@ -40,6 +91,7 @@ offset_bottom = -13.0
 damage_component = NodePath("../DamageComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1114547444]
+material = SubResource("ShaderMaterial_vpe8f")
 texture = ExtResource("1_sbwxd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=585285923]

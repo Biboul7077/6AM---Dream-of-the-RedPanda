@@ -9,4 +9,6 @@ func _on_area_entered(area: Area2D) -> void:
 	
 	
 	if hit_component != null:
+		GameManager.frame_freeze(0.0,0.2)
+		
 		hurt.emit(hit_component.hit_damage)

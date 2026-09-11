@@ -16,7 +16,7 @@ func _ready() -> void:
 func _on_process(_delta: float) -> void:
 	pass
 
-func _on_physics_process(delta: float) -> void:
+func _on_physics_process(_delta: float) -> void:
 	chase_speed = GameManager.enemy_speed
 	
 	var target = nightmare.target

@@ -25,6 +25,7 @@ func _on_process(_delta : float) -> void:
 
 func _on_physics_process(_delta : float) -> void:
 	direction = -player.player_input_direction
+	player.can_slash = false
 	
 	if player.global_position.distance_to(initial_position) < distance:
 		player.velocity = direction * speed
@@ -47,6 +48,7 @@ func _on_enter() -> void:
 
 func _on_exit() -> void:
 	knocked_out_state_timeout = true
+	player.can_slash = true
 
 
 func on_knocked_out_state_timeout() -> void:

@@ -33,9 +33,6 @@ func _on_next_transitions() -> void:
 	
 	if GameInputEvents.dodge():
 		transition.emit("Dodge")
-	
-	if GameInputEvents.attack():
-		transition.emit("Attack")
 
 
 func _on_enter() -> void:
@@ -45,5 +42,5 @@ func _on_enter() -> void:
 func _on_exit() -> void:
 	pass
 
-func on_hurt(hit_damage: int) -> void:
+func on_hurt(_hit_damage: int) -> void:
 	transition.emit("KnockedOut")

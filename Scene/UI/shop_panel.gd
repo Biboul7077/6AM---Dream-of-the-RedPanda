@@ -1,8 +1,8 @@
 extends PanelContainer
 
-@onready var upgrade_1: Button = $MarginContainer/HBoxContainer/Upgrade1
-@onready var upgrade_2: Button = $MarginContainer/HBoxContainer/Upgrade2
-@onready var upgrade_3: Button = $MarginContainer/HBoxContainer/Upgrade3
+@onready var upgrade_1: UpgradeButton = $MarginContainer/HBoxContainer/UpgradeButton1
+@onready var upgrade_2: UpgradeButton = $MarginContainer/HBoxContainer/UpgradeButton2
+@onready var upgrade_3: UpgradeButton = $MarginContainer/HBoxContainer/UpgradeButton3
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @export var shop_set: Array[ShopItem] = [null, null, null]
@@ -15,20 +15,21 @@ var color_array: Array[Color] = [
 	Color("ce7f24ff")
 	]
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	shop_set = UpgradeManager.current_shop
 	_update_slot(upgrade_1, shop_set[0])
 	_update_slot(upgrade_2, shop_set[1])
 	_update_slot(upgrade_3, shop_set[2])
 
 
-func _update_slot(button: Button, item: ShopItem) -> void:
+func _update_slot(button: UpgradeButton, item: ShopItem) -> void:
 	if item == null:
 		return
-	button.get_node("MarginContainer/VBoxContainer/MarginContainer/LabelEffect").text = item.item_name
-	button.get_node("MarginContainer/VBoxContainer/MarginContainer/LabelEffect").add_theme_color_override("font_color", color_array[item.rarity])
-	button.get_node("MarginContainer/VBoxContainer/TextureRect").texture = item.icon
-	button.get_node("MarginContainer/VBoxContainer/LabelPrice").text = item.description
+	button.upgrade_name = item.item_name
+	button.upgrade_rarity = color_array[item.rarity]
+	button.upgrade_icon = item.icon
+	button.upgrade_price = item.price
+	button.upgrade_description = item.description
 	button.disabled = not item.can_be_purchased()
 
 
@@ -49,13 +50,13 @@ func _try_purchase(item: ShopItem) -> void:
 	audio_stream_player.play()
 
 
-func _on_upgrade_1_pressed() -> void:
+func _on_upgrade_button_1_pressed() -> void:
 	_try_purchase(shop_set[0])
 
 
-func _on_upgrade_2_pressed() -> void:
+func _on_upgrade_button_2_pressed() -> void:
 	_try_purchase(shop_set[1])
 
 
-func _on_upgrade_3_pressed() -> void:
+func _on_upgrade_button_3_pressed() -> void:
 	_try_purchase(shop_set[2])

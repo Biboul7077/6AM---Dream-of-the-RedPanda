@@ -5,9 +5,9 @@ extends CanvasLayer
 @onready var game_over_screen_background_good_ending: TextureRect = $GameOverScreenBackgroundGoodEnding
 @onready var game_over_screen_background_bad_ending: TextureRect = $GameOverScreenBackgroundBadEnding
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var label: Label = $MarginContainer/MainMenuMarginContainer/Label
-@onready var options_menu_margin_container: MarginContainer = $MarginContainer/OptionsMenuMarginContainer
-@onready var main_menu_margin_container: MarginContainer = $MarginContainer/MainMenuMarginContainer
+@onready var label: Label = $MainMenuMarginContainer/Label
+@onready var main_menu_margin_container: MarginContainer = $MainMenuMarginContainer
+@onready var game_menu_settings: OptionMenu = $GameMenuSettings
 
 
 func _ready() -> void:
@@ -26,19 +26,19 @@ func _on_start_game_button_pressed() -> void:
 
 
 func _on_options_game_button_pressed() -> void:
-	options_menu_margin_container.visible = true
 	main_menu_margin_container.visible = false
+	game_menu_settings.visible = true
 
 
 func _on_quit_game_button_pressed() -> void:
 	GameManager.quit_game()
 
 
+func _on_game_menu_settings_exit_options_menu() -> void:
+	main_menu_margin_container.visible = true
+	game_menu_settings.visible = false
+
+
 func _exit_tree() -> void:
 	audio_stream_player.stop()
 	TimeManager.timestop = false
-
-
-func _on_back_to_main_menu_game_button_pressed() -> void:
-	options_menu_margin_container.visible = false
-	main_menu_margin_container.visible = true

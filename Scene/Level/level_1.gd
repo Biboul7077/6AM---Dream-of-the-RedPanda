@@ -140,19 +140,19 @@ func set_connection(a: Vector2i, b: Vector2i, add: bool) -> void:
 
 
 func generate_rooms() -> void:
-	var position: Vector2
+	var current_position: Vector2
 	var start_position: Vector2
  
 	for y in dimensions.y:
 		for x in dimensions.x:
-			position = Vector2(x, y) * Vector2(room_dimension)
+			current_position = Vector2(x, y) * Vector2(room_dimension)
 			var mask: int = connections[x][y]
 			var room_id: Node2D
  
 			if level[x][y] is String:
 				if level[x][y] == "S":
 					room_id = START_ROOM.instantiate()
-					start_position = position + Vector2(room_dimension) / 2
+					start_position = current_position + Vector2(room_dimension) / 2
 				elif level[x][y] == "E":
 					room_id = BED_ROOM.instantiate()
 				elif level[x][y]:
@@ -161,7 +161,7 @@ func generate_rooms() -> void:
 				room_id = FOREST_ROOM.instantiate()
  
 			if room_id:
-				room_id.global_position = position
+				room_id.global_position = current_position
 				add_child(room_id)
 				if room_id.has_method("configure"):
 					room_id.configure(mask)

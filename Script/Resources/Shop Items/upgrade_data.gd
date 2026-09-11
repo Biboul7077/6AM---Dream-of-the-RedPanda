@@ -6,7 +6,7 @@ extends ShopItem
 @export var value: float
 @export var operation: DataTypes.Operator
 
-func apply(target: Node = null) -> void:
+func apply(_target: Node = null) -> void:
 	match operation:
 		DataTypes.Operator.ADD:
 			GameManager.set(variable_name, GameManager.get(variable_name) + value)

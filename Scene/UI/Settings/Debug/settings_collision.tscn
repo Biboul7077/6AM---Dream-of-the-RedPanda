@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c1367rkynt06o"]
+
+[ext_resource type="Script" uid="uid://b3tv135qlskbo" path="res://Scene/UI/Settings/Debug/collision_check_button.gd" id="1_tfl6b"]
+
+[node name="SettingsCollision" type="Control" unique_id=1825122843]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FullScreenHBoxContainer" type="HBoxContainer" parent="." unique_id=139693298]
+custom_minimum_size = Vector2(212, 0)
+layout_mode = 0
+size_flags_horizontal = 0
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="FullScreenHBoxContainer" unique_id=834143748]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "Show Collision"
+
+[node name="CheckButton" type="CheckButton" parent="FullScreenHBoxContainer" unique_id=1395048376]
+layout_mode = 2
+size_flags_horizontal = 8
+button_pressed = true
+script = ExtResource("1_tfl6b")
+
+[connection signal="toggled" from="FullScreenHBoxContainer/CheckButton" to="FullScreenHBoxContainer/CheckButton" method="_on_toggled"]

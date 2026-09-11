@@ -9,7 +9,7 @@ var target_detected := false
 func _ready() -> void:
 	stream.set_sync_stream_volume(1, VOLUME_ZERO)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if stream == null:
 		return
 	

@@ -94,6 +94,7 @@ tile_map_data = PackedByteArray("AAALAAMABQAAAAAAAAALAAUABQAAAAAAAAALAAcABQAAAAA
 tile_set = ExtResource("1_lsm8f")
 
 [node name="West" type="Node2D" parent="Doors" unique_id=642626289]
+visible = false
 y_sort_enabled = true
 
 [node name="Ground" type="TileMapLayer" parent="Doors/West" unique_id=733435549]
@@ -116,5 +117,5 @@ tile_set = ExtResource("1_lsm8f")
 [node name="Entity" type="Node2D" parent="." unique_id=335835009]
 y_sort_enabled = true
 
-[node name="Nightmare" parent="Entity" unique_id=1762457167 instance=ExtResource("3_3oki7")]
-position = Vector2(176, 176)
+[node name="Nightwalker" parent="Entity" unique_id=1762457167 instance=ExtResource("3_3oki7")]
+position = Vector2(256, 256)

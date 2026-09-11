@@ -28,9 +28,6 @@ func _on_next_transitions() -> void:
 	if GameInputEvents.skill_input() != -1:
 		transition.emit("Cast")
 	
-	if GameInputEvents.attack():
-		transition.emit("Attack")
-	
 	if GameManager.is_shop_opened:
 		transition.emit("Locked")
 
@@ -43,5 +40,5 @@ func _on_exit() -> void:
 	animated_sprite_2d.stop()
 
 
-func on_hurt(hit_damage: int) -> void:
+func on_hurt(_hit_damage: int) -> void:
 	transition.emit("KnockedOut")

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://de2k7h1cqd8lo"]
+
+[ext_resource type="Script" uid="uid://cop3un0obr0xr" path="res://Scene/UI/fullscreen_check_button.gd" id="1_umd2t"]
+
+[node name="SettingsFullscreen" type="Control" unique_id=1367441805]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FullScreenHBoxContainer" type="HBoxContainer" parent="." unique_id=1746242154]
+custom_minimum_size = Vector2(212, 0)
+layout_mode = 0
+size_flags_horizontal = 0
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="FullScreenHBoxContainer" unique_id=986981313]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="CheckButton" type="CheckButton" parent="FullScreenHBoxContainer" unique_id=464984621]
+layout_mode = 2
+size_flags_horizontal = 8
+button_pressed = true
+script = ExtResource("1_umd2t")
+
+[connection signal="toggled" from="FullScreenHBoxContainer/CheckButton" to="FullScreenHBoxContainer/CheckButton" method="_on_toggled"]
