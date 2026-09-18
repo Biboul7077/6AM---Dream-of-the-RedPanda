@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://bh2l8m0dhhaek"]
+
+[ext_resource type="Script" uid="uid://vihtqlklah16" path="res://Scene/Character/Nightmares/Parasomnia/boss_parasomnia.gd" id="1_3gn8n"]
+[ext_resource type="PackedScene" uid="uid://do8rifw7unru1" path="res://Scene/Component/hurt_component.tscn" id="1_fxfe1"]
+[ext_resource type="Texture2D" uid="uid://b1keixy4kuflq" path="res://Assets/Images/Characters/sAnimals.png" id="1_lmv74"]
+[ext_resource type="PackedScene" uid="uid://b4lh1400aba7p" path="res://Scene/Component/damage_component.tscn" id="1_qr44m"]
+[ext_resource type="PackedScene" uid="uid://hjjbt8p3x4wr" path="res://Scene/Component/hit_component.tscn" id="1_vfk4v"]
+[ext_resource type="Texture2D" uid="uid://54jna8plnucj" path="res://Assets/Images/Particles/red_chronon_particles.png" id="2_48a0u"]
+[ext_resource type="PackedScene" uid="uid://7wm2gdltwqh1" path="res://Scene/Component/healthbar_component.tscn" id="2_pjgvk"]
+[ext_resource type="Script" uid="uid://dfb0y0ohmabub" path="res://Script/State Machine/node_state_machine.gd" id="2_wtxij"]
+[ext_resource type="Script" uid="uid://cpjmymlq8w4ej" path="res://Scene/Character/Nightmares/Parasomnia/idle_state.gd" id="3_2w2ng"]
+[ext_resource type="Script" uid="uid://1mga45b4tbtv" path="res://Scene/Character/Nightmares/Parasomnia/chase_state.gd" id="4_516tk"]
+[ext_resource type="Script" uid="uid://cgsrvd1jb8l5" path="res://Scene/Character/Nightmares/Parasomnia/attack_bite_state.gd" id="5_el6d8"]
+[ext_resource type="Script" uid="uid://cogy0icjrls51" path="res://Scene/Character/Nightmares/Parasomnia/attack_dash_state.gd" id="6_3h0dc"]
+[ext_resource type="Script" uid="uid://dwr5c8t1q7hvl" path="res://Scene/Character/Nightmares/Parasomnia/knocked_out_state.gd" id="6_ciwkt"]
+[ext_resource type="Shader" uid="uid://cla20hknakkxy" path="res://Scene/Character/hitflash.gdshader" id="7_25flj"]
+[ext_resource type="Script" uid="uid://c8aymypno3bct" path="res://Scene/Character/Nightmares/Parasomnia/attack_feared_state.gd" id="7_djpxg"]
+[ext_resource type="PackedScene" uid="uid://7dpf7cadm6lc" path="res://Scene/Component/aggro_component.tscn" id="7_w7qrx"]
+[ext_resource type="Script" uid="uid://dwpvoqatgflp2" path="res://Scene/Character/Nightmares/Parasomnia/death_state.gd" id="9_7cnax"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pjgvk"]
+particle_flag_disable_z = true
+initial_velocity_min = 90.0
+initial_velocity_max = 90.0
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 55.879997
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gn8n"]
+size = Vector2(25, 19)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr44m"]
+radius = 20.024984
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jbdh5"]
+radius = 78.00641
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lmv74"]
+radius = 13.0
+height = 34.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pjgvk"]
+shader = ExtResource("7_25flj")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_amount = 0.0
+shader_parameter/solid_flash = false
+
+[node name="BossParasomnia" type="CharacterBody2D" unique_id=435254082]
+collision_layer = 4
+script = ExtResource("1_3gn8n")
+
+[node name="ParticlesDamage" type="GPUParticles2D" parent="." unique_id=1670127470]
+emitting = false
+amount = 6
+texture = ExtResource("2_48a0u")
+lifetime = 0.33
+one_shot = true
+explosiveness = 0.9
+randomness = 0.2
+process_material = SubResource("ParticleProcessMaterial_pjgvk")
+
+[node name="ContactHitComponent" parent="." unique_id=1131052984 instance=ExtResource("1_vfk4v")]
+
+[node name="ContactHitComponentCollisionShape" type="CollisionShape2D" parent="ContactHitComponent" unique_id=733216587]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_3gn8n")
+debug_color = Color(0.99071723, 0.09447854, 7.70092e-07, 0.41960785)
+
+[node name="DamageComponent" parent="." unique_id=557876462 instance=ExtResource("1_qr44m")]
+max_damage = 15
+
+[node name="HurtComponent" parent="." unique_id=638363476 instance=ExtResource("1_fxfe1")]
+collision_layer = 4
+collision_mask = 8
+
+[node name="HurtComponentCollisionShape" type="CollisionShape2D" parent="HurtComponent" unique_id=1058295518]
+shape = SubResource("CircleShape2D_qr44m")
+debug_color = Color(0, 0.64366716, 0.3015087, 0.41960785)
+
+[node name="AggroComponent" parent="." unique_id=1913548347 instance=ExtResource("7_w7qrx")]
+collision_layer = 4
+collision_mask = 2
+
+[node name="AggroComponentCollisionShape2D" type="CollisionShape2D" parent="AggroComponent" unique_id=2036305426]
+shape = SubResource("CircleShape2D_jbdh5")
+debug_color = Color(0, 0.6442519, 0.29058477, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1140286365]
+shape = SubResource("CapsuleShape2D_lmv74")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=445238617]
+material = SubResource("ShaderMaterial_pjgvk")
+texture = ExtResource("1_lmv74")
+
+[node name="HealthbarComponent" parent="." unique_id=1410572372 node_paths=PackedStringArray("damage_component") instance=ExtResource("2_pjgvk")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -37.0
+offset_right = 22.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+damage_component = NodePath("../DamageComponent")
+
+[node name="StateMachine" type="Node" parent="." unique_id=166636864]
+script = ExtResource("2_wtxij")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1622944181 node_paths=PackedStringArray("aggro_component", "nightmare", "sprite_2d")]
+script = ExtResource("3_2w2ng")
+aggro_component = NodePath("../../AggroComponent")
+nightmare = NodePath("../..")
+sprite_2d = NodePath("../../Sprite2D")
+
+[node name="Chase" type="Node" parent="StateMachine" unique_id=2089199203]
+script = ExtResource("4_516tk")
+
+[node name="AttackBite" type="Node" parent="StateMachine" unique_id=1852361783]
+script = ExtResource("5_el6d8")
+
+[node name="AttackDash" type="Node" parent="StateMachine" unique_id=985536939]
+script = ExtResource("6_3h0dc")
+
+[node name="AttackFeared" type="Node" parent="StateMachine" unique_id=692437952]
+script = ExtResource("7_djpxg")
+
+[node name="KnockedOut" type="Node" parent="StateMachine" unique_id=82678943]
+script = ExtResource("6_ciwkt")
+
+[node name="Death" type="Node" parent="StateMachine" unique_id=1010583566]
+script = ExtResource("9_7cnax")

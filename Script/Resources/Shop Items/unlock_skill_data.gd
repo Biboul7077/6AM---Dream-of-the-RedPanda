@@ -18,3 +18,4 @@ func apply(_target: Node = null) -> void:
 		return
 	GameManager.player_skills[slot_index] = skill
 	SkillManager.current_skill_list = GameManager.player_skills
+	SkillManager.skill_list_changed.emit()

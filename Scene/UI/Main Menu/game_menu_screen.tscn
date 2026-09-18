@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwn5gsbv65jpc" path="res://Assets/Images/Titlescreens/sTitlescreen_Gameover_YouMadeIt.png" id="3_1slke"]
 [ext_resource type="Texture2D" uid="uid://cxpugx0n4awa3" path="res://Assets/Images/Titlescreens/sTitlescreen_Gameover_YouDidntMakeIt.png" id="4_hwph3"]
 [ext_resource type="AudioStream" uid="uid://dgeixmmw4m4b3" path="res://Assets/Sounds/Music/MainMenu.mp3" id="4_pl3cw"]
-[ext_resource type="PackedScene" uid="uid://dxj650f7sfyjr" path="res://Scene/UI/Main Menu/game_menu_settings.tscn" id="5_qnx1u"]
+[ext_resource type="PackedScene" uid="uid://dxj650f7sfyjr" path="res://Scene/UI/Settings/game_menu_settings.tscn" id="5_qnx1u"]
 [ext_resource type="Texture2D" uid="uid://c3vt2qsh2yxbr" path="res://Assets/Images/Titlescreens/sTitlescreen_v5.png" id="6_1umql"]
 
 [node name="GameMenuScreen" type="CanvasLayer" unique_id=463177816]

@@ -15,6 +15,7 @@ size = Vector2(138, 86.5)
 [node name="ShopKeeper" type="Node2D" unique_id=337558340]
 script = ExtResource("1_fwh05")
 shop_set = Array[ExtResource("2_nqpqd")]([ExtResource("3_52ukd"), ExtResource("4_fliwi"), ExtResource("5_llau1")])
+is_first_shop = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1771691498]
 position = Vector2(0, -56)

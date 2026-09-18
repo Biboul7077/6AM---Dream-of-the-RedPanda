@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://cgiogxx5hgqk0"]
 
 [ext_resource type="PackedScene" uid="uid://dgd3qg3mdqrjo" path="res://Scene/Character/Player/player.tscn" id="1_kmlv7"]
+[ext_resource type="PackedScene" uid="uid://usyq26lqno3i" path="res://Scene/Character/Nightmares/Nightwalker/nightmare.tscn" id="1_t6ovk"]
 
-[node name="test_scene_default" type="Node2D" unique_id=1485399452]
+[node name="TestSceneNightmares" type="Node2D" unique_id=1485399452]
+
+[node name="Nightwalker" parent="." unique_id=1762457167 instance=ExtResource("1_t6ovk")]
+position = Vector2(121, 137)
 
 [node name="Player" parent="." unique_id=480484202 instance=ExtResource("1_kmlv7")]
-position = Vector2(480, 310)
+position = Vector2(201, 164)

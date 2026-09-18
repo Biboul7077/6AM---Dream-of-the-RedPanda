@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cyy5smf4mil35"]
+
+[ext_resource type="Script" uid="uid://coywdd3r7mpwa" path="res://Scene/UI/Settings/Controls/hotkey_rebind_button.gd" id="1_dmxc5"]
+[ext_resource type="Script" uid="uid://vaoors1ygrw" path="res://Scene/UI/Settings/Controls/settings_hotkey_rebind_control.gd" id="1_wrp4x"]
+
+[node name="SettingsHotkeyRebind" type="Control" unique_id=301932728]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wrp4x")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=792392786]
+custom_minimum_size = Vector2(212, 0)
+layout_mode = 0
+size_flags_horizontal = 0
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1033649610]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "Going Left"
+
+[node name="RebindButton" type="Button" parent="HBoxContainer" unique_id=501814790]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+script = ExtResource("1_dmxc5")
+action = "KeyLeft"

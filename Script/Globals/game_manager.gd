@@ -14,6 +14,7 @@ const NOSKILL = preload("uid://g3cfufofkf58")
 @export_group("Debug Variables")
 @export var player_start_money: int = 0
 @export var shopkeepers: bool = false
+@export var game_speed: float = 4.0
 
 @export_group("Enemy Stats")
 @export var enemy_speed: float

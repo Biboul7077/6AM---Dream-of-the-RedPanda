@@ -9,8 +9,10 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var particles_damage: GPUParticles2D = $ParticlesDamage
 var keocoin_scene = preload("uid://bnq0hq4fcsv3k")
+var chrononshard_scene = preload("uid://b15xvras5iasp")
 var flash_amount: float = 0.0
 
+@warning_ignore("unused_signal")
 signal player_detected
 signal nightmare_vanished
 
@@ -44,6 +46,9 @@ func add_resources_scene() -> void:
 			keocoin_instance.position = position + Vector2(randi_range(-20,20),randi_range(-20,20))
 			keocoin_instance.coin_type = money_drops.find(coin_amount)
 			get_parent().add_child(keocoin_instance)
+	var chrononshard_instance = chrononshard_scene.instantiate() as Node2D
+	chrononshard_instance.position = position
+	get_parent().add_child(chrononshard_instance)
 
 func on_difficulty_increased() -> void:
 	damage_component.current_damage = (damage_component.current_damage * GameManager.enemy_maximum_damage)/damage_component.max_damage

@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cih2mroeqo8wv" path="res://Scene/UI/skill_panel.gd" id="1_0w8fb"]
 [ext_resource type="Texture2D" uid="uid://kld2bl1er1e4" path="res://Assets/Images/UI/sIconRechargeSpell.png" id="2_gv1n4"]
+[ext_resource type="Texture2D" uid="uid://c6u3cul4dpq14" path="res://Assets/Images/UI/spell_border.png" id="3_v4fy4"]
+[ext_resource type="Texture2D" uid="uid://bry8m3w5ejgto" path="res://Assets/Images/UI/spell_border_2.png" id="4_g5ouu"]
+[ext_resource type="Texture2D" uid="uid://n6yu5ccwrr72" path="res://Assets/Images/UI/sIconNoSpell.png" id="4_km3u8"]
+[ext_resource type="Texture2D" uid="uid://kgyeejm6ueig" path="res://Assets/Images/UI/spell_border_3.png" id="4_yoydm"]
 
 [node name="SkillPanel" type="PanelContainer" unique_id=216889701]
 offset_right = 56.0
@@ -19,6 +23,7 @@ theme_override_constants/separation = 20
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 button_mask = 2
+icon = ExtResource("4_km3u8")
 expand_icon = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/Spell1" unique_id=638662497]
@@ -29,9 +34,17 @@ offset_bottom = 77.0
 fill_mode = 4
 texture_progress = ExtResource("2_gv1n4")
 
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Spell1" unique_id=732763444]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("3_v4fy4")
+
 [node name="Spell2" type="Button" parent="MarginContainer/HBoxContainer" unique_id=811348132]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+icon = ExtResource("4_km3u8")
 expand_icon = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/Spell2" unique_id=56699033]
@@ -42,9 +55,17 @@ offset_bottom = 77.0
 fill_mode = 4
 texture_progress = ExtResource("2_gv1n4")
 
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Spell2" unique_id=334214067]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("4_g5ouu")
+
 [node name="Spell3" type="Button" parent="MarginContainer/HBoxContainer" unique_id=202386392]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+icon = ExtResource("4_km3u8")
 expand_icon = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/Spell3" unique_id=1727350394]
@@ -54,6 +75,13 @@ offset_right = 67.0
 offset_bottom = 77.0
 fill_mode = 4
 texture_progress = ExtResource("2_gv1n4")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Spell3" unique_id=1913400566]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("4_yoydm")
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Spell1" to="." method="_on_spell_1_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Spell2" to="." method="_on_spell_2_pressed"]

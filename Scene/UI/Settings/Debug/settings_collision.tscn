@@ -24,7 +24,6 @@ text = "Show Collision"
 [node name="CheckButton" type="CheckButton" parent="FullScreenHBoxContainer" unique_id=1395048376]
 layout_mode = 2
 size_flags_horizontal = 8
-button_pressed = true
 script = ExtResource("1_tfl6b")
 
 [connection signal="toggled" from="FullScreenHBoxContainer/CheckButton" to="FullScreenHBoxContainer/CheckButton" method="_on_toggled"]

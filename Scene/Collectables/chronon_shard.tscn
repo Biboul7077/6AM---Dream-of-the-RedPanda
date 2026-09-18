@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://b15xvras5iasp"]
+
+[ext_resource type="Texture2D" uid="uid://rd0evwapdrhh" path="res://Assets/Images/Collectables/chronon_shard.png" id="1_mfqk1"]
+[ext_resource type="Script" uid="uid://dfkanc8khimt" path="res://Scene/Collectables/chronon_shard.gd" id="2_p3xrq"]
+[ext_resource type="PackedScene" uid="uid://ca56aosl0xmj2" path="res://Scene/Component/collectable_component.tscn" id="3_gl8iw"]
+[ext_resource type="AudioStream" uid="uid://dlccfy3u20o4o" path="res://Assets/Sounds/SFX/sndCollectCoin.wav" id="4_gyqb5"]
+[ext_resource type="Texture2D" uid="uid://bvqn00u75g8qf" path="res://Assets/Images/light.png" id="5_21npe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ata7k"]
+radius = 6.0827627
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d5nrj"]
+random_pitch = 1.0905077
+streams_count = 1
+stream_0/stream = ExtResource("4_gyqb5")
+
+[node name="ChrononShard" type="Sprite2D" unique_id=890039406]
+texture = ExtResource("1_mfqk1")
+script = ExtResource("2_p3xrq")
+
+[node name="CollectableComponent" parent="." unique_id=132276541 node_paths=PackedStringArray("collectable_audio", "sprite_2d") instance=ExtResource("3_gl8iw")]
+collision_mask = 2
+collectable_name = "ChrononShard"
+collectable_audio = NodePath("../AudioStreamPlayer2D")
+sprite_2d = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent" unique_id=111147557]
+shape = SubResource("CircleShape2D_ata7k")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1791895928]
+stream = SubResource("AudioStreamRandomizer_d5nrj")
+bus = &"SFX"
+
+[node name="DirectionalLight2D" type="PointLight2D" parent="." unique_id=1864206779]
+color = Color(0, 0.99607843, 0.23921569, 1)
+texture = ExtResource("5_21npe")
+
+[connection signal="area_exited" from="CollectableComponent" to="." method="_on_collectable_component_area_exited"]

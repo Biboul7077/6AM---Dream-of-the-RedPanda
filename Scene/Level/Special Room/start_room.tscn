@@ -32,3 +32,4 @@ y_sort_enabled = true
 [node name="ShopKeeper" parent="Entity" unique_id=337558340 instance=ExtResource("2_c3767")]
 y_sort_enabled = true
 position = Vector2(74, 168)
+is_spell_only = true

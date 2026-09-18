@@ -4,8 +4,6 @@ const MINUTES_PER_DAY: int = 24*60
 const MINUTES_PER_HOUR: int = 60
 const GAME_MINUTE_DURATION: float = TAU / MINUTES_PER_DAY
 
-var game_speed: float = 5.0
-
 var initial_hour: int = 0
 var initial_minute: int = 0
 
@@ -23,7 +21,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if !timestop:
-		time += delta * game_speed * GAME_MINUTE_DURATION
+		time += delta * GameManager.game_speed * GAME_MINUTE_DURATION
 	game_time.emit(time)
 	
 	recalculate_time()

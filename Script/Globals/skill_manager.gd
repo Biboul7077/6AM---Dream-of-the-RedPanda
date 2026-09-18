@@ -9,6 +9,7 @@ signal cast_started(skill: Skill)
 signal cast_finished(skill: Skill)
 signal cast_failed(skill: Skill, reason: String)
 signal cooldown_updated(skill: Skill, time_remaining: float)
+signal skill_list_changed
 
 @export var current_skill_list: Array[Skill]
 @export var recharging: Dictionary = {}

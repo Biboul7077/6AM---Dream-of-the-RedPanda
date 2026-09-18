@@ -16,5 +16,5 @@ func _process(_delta: float) -> void:
 	label_name.text = upgrade_name
 	label_name.add_theme_color_override("font_color", upgrade_rarity)
 	texture_rect.texture = upgrade_icon
-	label_price.text = "Costs %d KeoCoins" % upgrade_price
+	label_price.text = "Costs %d KeoCoins" % upgrade_price if upgrade_price != 0 else "Free !"
 	label_description.text = upgrade_description

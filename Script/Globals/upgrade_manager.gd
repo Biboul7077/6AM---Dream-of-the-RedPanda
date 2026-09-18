@@ -9,6 +9,8 @@ const TIME_STOP_DURATION_UPGRADE = preload("uid://cg3cj3xx14285")
 
 # UNLOCK
 const UNLOCK_ZAWARUDO_DATA = preload("uid://bnsugu8ta0y81")
+const UNLOCK_KILLERQUEEN_DATA = preload("uid://dfhslgwepssm3")
+const UNLOCK_MADEINHEAVEN_DATA = preload("uid://bof6qrthuwlb7")
 
 
 var upgrades_data: Array[Upgrade] = [
@@ -20,23 +22,23 @@ var upgrades_data: Array[Upgrade] = [
 ]
 
 var skill_unlocks_data: Array[SkillUnlock] = [
-	UNLOCK_ZAWARUDO_DATA
+	UNLOCK_ZAWARUDO_DATA,
+	UNLOCK_KILLERQUEEN_DATA,
+	UNLOCK_MADEINHEAVEN_DATA
 ]
 
 @export var current_shop: Array[ShopItem] = [DAMAGE_UPGRADE_RESOURCE, RECOVERING_UPGRADE_RESOURCE, SPEED_UPGRADE_RESOURCE]
-
-## Poids relatif de tirage d'un sort par rapport à un upgrade de stat.
-## 1.0 = même chance qu'un upgrade classique. Baisse-le si tu veux les sorts plus rares.
+@export var shop_id: ShopKeeper
 @export var skill_unlock_weight: float = 1.0
 
 
-func choose_random_upgrade() -> Array[ShopItem]:
+func choose_random_upgrade(is_spell_only: bool) -> Array[ShopItem]:
 	var pool: Array[ShopItem] = []
-	pool.append_array(upgrades_data)
+	if !is_spell_only:
+		pool.append_array(upgrades_data)
 
 	for unlock in skill_unlocks_data:
 		if unlock.can_be_purchased():
-			# ajoute plusieurs fois l'entrée pour pondérer sa chance d'apparition
 			for i in range(max(1, roundi(skill_unlock_weight))):
 				pool.append(unlock)
 

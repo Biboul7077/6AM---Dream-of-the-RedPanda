@@ -5,12 +5,8 @@ extends PanelContainer
 var skill_list = GameManager.player_skills
 
 func _ready() -> void:
-	if skill_list[0] != null:
-		spell_1.icon = skill_list[0].icon
-	if skill_list[1] != null:
-		spell_2.icon = skill_list[1].icon
-	if skill_list[2] != null:
-		spell_3.icon = skill_list[2].icon
+	SkillManager.skill_list_changed.connect(on_skill_list_changed)
+	on_skill_list_changed()
 
 	SkillManager.cooldown_updated.connect(_on_cooldown_updated)
 
@@ -38,3 +34,12 @@ func _on_spell_2_pressed() -> void:
 	Input.action_press("keySpell2")
 func _on_spell_3_pressed() -> void:
 	Input.action_press("keySpell3")
+
+
+func on_skill_list_changed():
+	if skill_list[0] != null:
+		spell_1.icon = skill_list[0].icon
+	if skill_list[1] != null:
+		spell_2.icon = skill_list[1].icon
+	if skill_list[2] != null:
+		spell_3.icon = skill_list[2].icon

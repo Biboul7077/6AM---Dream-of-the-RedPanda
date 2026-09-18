@@ -220,7 +220,6 @@ offset = Vector2(-24, -48)
 [node name="SwordPivot" type="Node2D" parent="AnimatedSprite2D" unique_id=23699031]
 
 [node name="Sword" type="Sprite2D" parent="AnimatedSprite2D/SwordPivot" unique_id=958113546]
-z_index = 1
 y_sort_enabled = true
 texture = ExtResource("3_bdeum")
 centered = false
