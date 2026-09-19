@@ -1,7 +1,7 @@
 class_name NodeStateMachine
 extends Node
 
-@onready var player: Player
+@export var player: Node
 @export var initial_node_state : NodeState
 
 var node_states : Dictionary = {}
@@ -9,6 +9,7 @@ var current_node_state : NodeState
 var current_node_state_name : String
 
 func _ready() -> void:
+	
 	for child in get_children():
 		if child is NodeState:
 			node_states[child.name.to_lower()] = child
@@ -46,3 +47,7 @@ func transition_to(node_state_name : String) -> void:
 	current_node_state_name = current_node_state.name.to_lower()
 	
 	new_node_state._on_enter()
+
+
+func on_timestop_change(stopped: bool) -> void:
+	process_mode = PROCESS_MODE_DISABLED if stopped else PROCESS_MODE_INHERIT

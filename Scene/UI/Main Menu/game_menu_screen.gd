@@ -18,7 +18,6 @@ func _ready() -> void:
 	else:
 		label.text = "DREAM OF A RED PANDA"
 	audio_stream_player.play()
-	TimeManager.timestop = true
 
 func _on_start_game_button_pressed() -> void:
 	GameManager.start_game()
@@ -41,4 +40,3 @@ func _on_game_menu_settings_exit_options_menu() -> void:
 
 func _exit_tree() -> void:
 	audio_stream_player.stop()
-	TimeManager.timestop = false

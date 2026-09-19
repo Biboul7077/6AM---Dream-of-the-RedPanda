@@ -3,6 +3,9 @@ extends Area2D
 
 signal hurt
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 
 func _on_area_entered(area: Area2D) -> void:
 	var hit_component = area as HitComponent

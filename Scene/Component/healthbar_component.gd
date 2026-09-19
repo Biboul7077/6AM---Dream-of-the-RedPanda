@@ -4,6 +4,7 @@ extends ProgressBar
 @export var damage_component: DamageComponent
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	call_deferred("set_variable")
 
 func _process(_delta: float) -> void:

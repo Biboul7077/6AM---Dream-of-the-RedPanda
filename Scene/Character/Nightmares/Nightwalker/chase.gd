@@ -26,9 +26,8 @@ func _on_physics_process(_delta: float) -> void:
 	var direction = (target.global_position - nightmare.global_position).normalized()
 	distance = nightmare.global_position.distance_to(target.global_position)
 
-	if !TimeManager.timestop:
-		nightmare.velocity = direction * chase_speed
-		nightmare.move_and_slide()
+	nightmare.velocity = direction * chase_speed
+	nightmare.move_and_slide()
 
 	if direction.x != 0:
 		sprite_2d.flip_h = direction.x < 0

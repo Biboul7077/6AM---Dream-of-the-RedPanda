@@ -2,4 +2,3 @@ POUR LA 0.4 :
 ENNEMIS - Sprite/Animation, State Machine
 Améliorer l'attaque - ajouter des frames d'invincibilité pour le joueur pendant qu'il est en récupération et un peu après la récupération
 Ajouter un état de knocked out pour l'ennemi
-JOUEUR - Attaque, réduire le temps de recharge/Mécanique de combo pour rendre l'attaque plus fluide

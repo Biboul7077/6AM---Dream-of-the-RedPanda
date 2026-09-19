@@ -21,6 +21,7 @@ func _ready() -> void:
 	particles_damage.emitting = false
 	hurt_component.hurt.connect(on_hurt)
 	GameManager.difficulty_increased.connect(on_difficulty_increased)
+	TimeManager.timestop_changed.connect(on_timestop_change)
 	damage_component.max_damaged_reached.connect(on_max_damaged_reached)
 
 func _process(_delta: float) -> void:
@@ -53,3 +54,6 @@ func add_resources_scene() -> void:
 func on_difficulty_increased() -> void:
 	damage_component.current_damage = (damage_component.current_damage * GameManager.enemy_maximum_damage)/damage_component.max_damage
 	damage_component.max_damage = GameManager.enemy_maximum_damage
+
+func on_timestop_change(stopped: bool) -> void:
+	process_mode = Node.PROCESS_MODE_DISABLED if stopped else PROCESS_MODE_INHERIT

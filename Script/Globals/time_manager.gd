@@ -31,6 +31,8 @@ func _process(delta: float) -> void:
 	game_time.emit(time)
 	
 	recalculate_time()
+	if tokens != {}:
+		print(tokens)
 
 func set_initial_time() -> void:
 	var initial_total_minute = initial_hour * MINUTES_PER_HOUR + initial_minute
@@ -62,7 +64,7 @@ func recalculate_time() -> void:
 
 func pause(_reason: StringName) -> void:
 	if reasons.has(_reason):
-		return  # idempotent : appuyer deux fois sur E dans la boutique ne cumule rien
+		return
 	var was_stopped := timestop
 	reasons[_reason] = true
 	if not was_stopped:
@@ -76,8 +78,6 @@ func resume(_reason: StringName) -> void:
 		timestop_changed.emit(false)
 
 
-## Pause temporaire (Za Warudo). Un second appel avec la même raison
-## prolonge la pause, et l'ancien timer ne la coupera pas trop tôt.
 func pause_for(_reason: StringName, _duration: float) -> void:
 	pause(_reason)
 	next_token += 1
