@@ -63,6 +63,7 @@ folder_colors={
 
 day_night_modulate=""
 enemies=""
+player=""
 
 [input]
 

@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bl6o5f1rdigxw" path="res://Scene/Character/Nightmares/Nightwalker/chase.gd" id="8_u1ft8"]
 [ext_resource type="Script" uid="uid://7fmi0k5rloc6" path="res://Scene/Character/Nightmares/Nightwalker/attack_state.gd" id="11_dp31k"]
 [ext_resource type="Texture2D" uid="uid://54jna8plnucj" path="res://Assets/Images/Particles/red_chronon_particles.png" id="12_6as4o"]
+[ext_resource type="Script" uid="uid://dxxc8rjms7djk" path="res://Scene/Character/Nightmares/Nightwalker/knocked_out_state.gd" id="13_fqnds"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fqnds"]
 particle_flag_disable_z = true
@@ -67,7 +68,7 @@ radius = 21.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_dp31k"]
 radius = 78.00641
 
-[node name="Nightwalker" type="CharacterBody2D" unique_id=1762457167]
+[node name="Nightwalker" type="CharacterBody2D" unique_id=1762457167 groups=["enemies"]]
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_4l5yk")
@@ -154,3 +155,11 @@ script = ExtResource("11_dp31k")
 hit_component_collision_shape = NodePath("../../ClawsHitComponent/CollisionShape2D")
 nightmare = NodePath("../..")
 sprite_2d = NodePath("../../Sprite2D")
+
+[node name="KnockedOut" type="Node" parent="StateMachine" unique_id=591077977 node_paths=PackedStringArray("nightmare", "sprite_2d")]
+script = ExtResource("13_fqnds")
+nightmare = NodePath("../..")
+sprite_2d = NodePath("../../Sprite2D")
+knocked_out_state_time_interval = null
+speed = null
+distance = null
