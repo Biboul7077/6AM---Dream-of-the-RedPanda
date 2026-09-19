@@ -25,12 +25,12 @@ func _process(_delta: float) -> void:
 		GameManager.is_shop_opened = true
 		UpgradeManager.current_shop = shop_set
 		UpgradeManager.shop_id = self
-		TimeManager.timestop = true
+		TimeManager.pause(&"shop")
 		get_tree().root.get_node(shop_screen_scene_root).visible = true
 		get_tree().root.get_node(game_screen_scene_root).visible = false
 	if active and Input.is_action_just_pressed("keyExit"):
 		GameManager.is_shop_opened = false
-		TimeManager.timestop = false
+		TimeManager.resume(&"shop")
 		get_tree().root.get_node(shop_screen_scene_root).visible = false
 		get_tree().root.get_node(game_screen_scene_root).visible = true
 

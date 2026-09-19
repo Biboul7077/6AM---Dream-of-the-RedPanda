@@ -1,6 +1,4 @@
 POUR LA 0.4 :
-SHOP - Premier shop : choisir un sort gratuit parmi ceux débloqués.
-Chaque shop est à usage unique (sauf si option cochée dans menu de debug)
 ENNEMIS - Sprite/Animation, State Machine
 Améliorer l'attaque - ajouter des frames d'invincibilité pour le joueur pendant qu'il est en récupération et un peu après la récupération
 Ajouter un état de knocked out pour l'ennemi

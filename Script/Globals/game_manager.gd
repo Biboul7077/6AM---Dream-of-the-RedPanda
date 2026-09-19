@@ -46,7 +46,8 @@ func quit_game() -> void:
 	get_tree().quit()
 
 func show_game_menu_screen(victory: bool = false) -> void:
-	TimeManager.timestop = true
+	TimeManager.reset()
+	is_shop_opened = false
 	var game_menu_screen_instance = game_menu_screen.instantiate()
 	var good_ending_screen = game_menu_screen_instance.find_child("GameOverScreenBackgroundGoodEnding")
 	var bad_ending_screen = game_menu_screen_instance.find_child("GameOverScreenBackgroundBadEnding")

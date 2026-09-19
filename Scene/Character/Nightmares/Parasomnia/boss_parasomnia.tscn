@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://cgsrvd1jb8l5" path="res://Scene/Character/Nightmares/Parasomnia/attack_bite_state.gd" id="5_el6d8"]
 [ext_resource type="Script" uid="uid://cogy0icjrls51" path="res://Scene/Character/Nightmares/Parasomnia/attack_dash_state.gd" id="6_3h0dc"]
 [ext_resource type="Script" uid="uid://dwr5c8t1q7hvl" path="res://Scene/Character/Nightmares/Parasomnia/knocked_out_state.gd" id="6_ciwkt"]
-[ext_resource type="Shader" uid="uid://cla20hknakkxy" path="res://Scene/Character/hitflash.gdshader" id="7_25flj"]
+[ext_resource type="Shader" uid="uid://cla20hknakkxy" path="res://Script/Shaders/hitflash.gdshader" id="7_25flj"]
 [ext_resource type="Script" uid="uid://c8aymypno3bct" path="res://Scene/Character/Nightmares/Parasomnia/attack_feared_state.gd" id="7_djpxg"]
 [ext_resource type="PackedScene" uid="uid://7dpf7cadm6lc" path="res://Scene/Component/aggro_component.tscn" id="7_w7qrx"]
 [ext_resource type="Script" uid="uid://dwpvoqatgflp2" path="res://Scene/Character/Nightmares/Parasomnia/death_state.gd" id="9_7cnax"]
