@@ -98,19 +98,17 @@ texture = ExtResource("1_sbwxd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=585285923]
 shape = SubResource("CircleShape2D_6gkux")
 
-[node name="ContactHitComponent" parent="." unique_id=1131052984 node_paths=PackedStringArray("parent") instance=ExtResource("7_7ep8m")]
+[node name="ContactHitComponent" parent="." unique_id=1131052984 instance=ExtResource("7_7ep8m")]
 collision_layer = 16
 collision_mask = 2
-parent = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHitComponent" unique_id=1990855978]
 shape = SubResource("CircleShape2D_7ep8m")
 debug_color = Color(0.6185649, 0.35602185, 1, 0.41960785)
 
-[node name="ClawsHitComponent" parent="." unique_id=519650296 node_paths=PackedStringArray("parent") instance=ExtResource("7_7ep8m")]
+[node name="ClawsHitComponent" parent="." unique_id=519650296 instance=ExtResource("7_7ep8m")]
 collision_layer = 16
 collision_mask = 2
-parent = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClawsHitComponent" unique_id=1088791976]
 shape = SubResource("ConvexPolygonShape2D_dp31k")

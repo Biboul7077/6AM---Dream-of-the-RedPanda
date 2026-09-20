@@ -7,10 +7,6 @@ var invincible: bool = false
 var _invincibility_token: int = 0
 
 
-func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
-
-
 func _on_area_entered(area: Area2D) -> void:
 	_try_hurt(area)
 
@@ -25,14 +21,11 @@ func _try_hurt(area: Area2D) -> void:
 	hurt.emit(hit_component.hit_damage * GameManager.player_damage)
 
 
-## Invincible jusqu'à un appel à grant_invincibility().
 func set_invincible(value: bool) -> void:
 	_invincibility_token += 1
 	invincible = value
 
 
-## Invincible pendant `duration` secondes, puis on revérifie les hitboxes
-## qui chevauchent encore le joueur (sinon elles seraient ignorées à jamais).
 func grant_invincibility(duration: float) -> void:
 	_invincibility_token += 1
 	var token := _invincibility_token

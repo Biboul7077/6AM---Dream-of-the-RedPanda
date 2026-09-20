@@ -9,6 +9,11 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var particles_damage: GPUParticles2D = $ParticlesDamage
 @onready var state_machine: NodeStateMachine = $StateMachine
+@onready var frozen_nodes: Array[Node] = [
+	$StateMachine,
+	$ContactHitComponent,
+	$ClawsHitComponent,
+]
 
 var keocoin_scene = preload("uid://bnq0hq4fcsv3k")
 var chrononshard_scene = preload("uid://b15xvras5iasp")
@@ -23,8 +28,9 @@ func _ready() -> void:
 	particles_damage.emitting = false
 	hurt_component.hurt.connect(on_hurt)
 	GameManager.difficulty_increased.connect(on_difficulty_increased)
-	TimeManager.timestop_changed.connect(on_timestop_change)
+	TimeManager.timestop_changed.connect(on_timestop_changed)
 	damage_component.max_damaged_reached.connect(on_max_damaged_reached)
+	on_timestop_changed(TimeManager.timestop)
 
 func _process(_delta: float) -> void:
 	flash_amount = max(flash_amount - 0.03, 0.0)
@@ -58,5 +64,8 @@ func on_difficulty_increased() -> void:
 	damage_component.current_damage = (damage_component.current_damage * GameManager.enemy_maximum_damage)/damage_component.max_damage
 	damage_component.max_damage = GameManager.enemy_maximum_damage
 
-func on_timestop_change(stopped: bool) -> void:
-	process_mode = Node.PROCESS_MODE_DISABLED if stopped else PROCESS_MODE_INHERIT
+
+func on_timestop_changed(stopped: bool) -> void:
+	var mode := Node.PROCESS_MODE_DISABLED if stopped else Node.PROCESS_MODE_INHERIT
+	for node in frozen_nodes:
+		node.process_mode = mode
