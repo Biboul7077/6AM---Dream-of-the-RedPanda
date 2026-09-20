@@ -133,9 +133,9 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_dp31k")
 debug_color = Color(0, 0.6442519, 0.29058477, 0.41960785)
 
-[node name="StateMachine" type="Node" parent="." unique_id=868106024 node_paths=PackedStringArray("player", "initial_node_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=868106024 node_paths=PackedStringArray("entity", "initial_node_state")]
 script = ExtResource("6_efeyt")
-player = NodePath("..")
+entity = NodePath("..")
 initial_node_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=167187729 node_paths=PackedStringArray("aggro_component", "nightmare", "sprite_2d")]
@@ -160,6 +160,3 @@ sprite_2d = NodePath("../../Sprite2D")
 script = ExtResource("13_fqnds")
 nightmare = NodePath("../..")
 sprite_2d = NodePath("../../Sprite2D")
-knocked_out_state_time_interval = null
-speed = null
-distance = null

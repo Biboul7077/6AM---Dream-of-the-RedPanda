@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var damage_component: DamageComponent = $DamageComponent
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var particles_damage: GPUParticles2D = $ParticlesDamage
+@onready var state_machine: NodeStateMachine = $StateMachine
+
 var keocoin_scene = preload("uid://bnq0hq4fcsv3k")
 var chrononshard_scene = preload("uid://b15xvras5iasp")
 var flash_amount: float = 0.0
@@ -29,6 +31,7 @@ func _process(_delta: float) -> void:
 	sprite_2d.material.set_shader_parameter('flash_amount',flash_amount)
 
 func on_hurt(hit_damage: int) -> void:
+	state_machine.current_node_state.transition.emit("KnockedOut")
 	particles_damage.rotation = target.get_angle_to(global_position)
 	particles_damage.emitting = true
 	flash_amount = 1.0
