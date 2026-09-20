@@ -342,9 +342,8 @@ wait_time = 0.4
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_b4qd8")
 
-[node name="State Machine" type="Node" parent="." unique_id=1907448807 node_paths=PackedStringArray("player", "initial_node_state")]
+[node name="State Machine" type="Node" parent="." unique_id=1907448807 node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("1_087al")
-player = NodePath("..")
 initial_node_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="State Machine" unique_id=36902124 node_paths=PackedStringArray("player", "animated_sprite_2d", "hurt_component")]
@@ -373,11 +372,12 @@ player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 audio_stream_player_2d = NodePath("../../AudioStreamPlayer")
 
-[node name="KnockedOut" type="Node" parent="State Machine" unique_id=1732259795 node_paths=PackedStringArray("player", "animated_sprite_2d", "audio_stream_player_2d")]
+[node name="KnockedOut" type="Node" parent="State Machine" unique_id=1732259795 node_paths=PackedStringArray("player", "animated_sprite_2d", "audio_stream_player_2d", "hurt_component")]
 script = ExtResource("10_mbl8b")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 audio_stream_player_2d = NodePath("../../AudioStreamPlayer2D")
+hurt_component = NodePath("../../HurtComponent")
 
 [node name="Locked" type="Node" parent="State Machine" unique_id=982591248]
 script = ExtResource("11_b4qd8")

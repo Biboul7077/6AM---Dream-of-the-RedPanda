@@ -6,6 +6,8 @@ extends NodeState
 @export var speed : int = 120
 @export var distance : int = 60
 @export var audio_stream_player_2d : AudioStreamPlayer2D
+@export var hurt_component: HurtComponent
+@export var post_recovery_invincibility: float = 1.0
 
 @onready var knocked_out_state_timer : Timer = Timer.new()
 
@@ -13,11 +15,12 @@ var knocked_out_state_timeout : bool = false
 var direction : Vector2
 var initial_position : Vector2
 
-func _ready() -> void:
-	knocked_out_state_timer.wait_time = knocked_out_state_time_interval
-	knocked_out_state_timer.timeout.connect(on_knocked_out_state_timeout)
 
+func _ready() -> void:
+	knocked_out_state_timer.one_shot = true
+	knocked_out_state_timer.timeout.connect(on_knocked_out_state_timeout)
 	add_child(knocked_out_state_timer)
+
 
 func _on_process(_delta : float) -> void:
 	pass
@@ -39,16 +42,16 @@ func _on_next_transitions() -> void:
 
 func _on_enter() -> void:
 	audio_stream_player_2d.play()
-	knocked_out_state_time_interval = GameManager.player_recovery_time
+	hurt_component.set_invincible(true)
 	animated_sprite_2d.play("KnockedOut")
 	initial_position = player.global_position
 	knocked_out_state_timeout = false
-	knocked_out_state_timer.start()
-
+	knocked_out_state_timer.start(GameManager.player_recovery_time)
 
 func _on_exit() -> void:
 	knocked_out_state_timeout = true
 	player.can_slash = true
+	hurt_component.grant_invincibility(post_recovery_invincibility)
 
 
 func on_knocked_out_state_timeout() -> void:
