@@ -24,7 +24,7 @@ text = "Fullscreen"
 [node name="CheckButton" type="CheckButton" parent="FullScreenHBoxContainer" unique_id=464984621]
 layout_mode = 2
 size_flags_horizontal = 8
-button_pressed = true
+toggle_mode = false
 script = ExtResource("1_umd2t")
 
 [connection signal="toggled" from="FullScreenHBoxContainer/CheckButton" to="FullScreenHBoxContainer/CheckButton" method="_on_toggled"]

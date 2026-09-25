@@ -14,8 +14,8 @@ func apply(_target: Node = null) -> void:
 	
 	match operation:
 		DataTypes.Operator.ADD:
-			GameManager.set(variable_name, stats.get(variable_name) + value)
+			GameManager.player_stats.set(variable_name, stats.get(variable_name) + value)
 		DataTypes.Operator.MUL:
-			GameManager.set(variable_name, stats.get(variable_name) * value)
+			GameManager.player_stats.set(variable_name, stats.get(variable_name) * value)
 		DataTypes.Operator.SET:
-			GameManager.set(variable_name, value)
+			GameManager.player_stats.set(variable_name, value)

@@ -30,9 +30,19 @@ func _on_physics_process(_delta : float) -> void:
 func _on_next_transitions() -> void:
 	if !GameInputEvents.is_movement_input():
 		transition.emit("Idle")
+		return
 	
 	if GameInputEvents.dodge():
 		transition.emit("Dodge")
+		return
+	
+	if GameInputEvents.attack() and player.can_slash:
+		transition.emit("Attack")
+		return
+	
+	if GameManager.is_shop_opened:
+		transition.emit("Locked")
+		return
 
 
 func _on_enter() -> void:

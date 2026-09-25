@@ -21,15 +21,23 @@ func _on_next_transitions() -> void:
 	
 	if GameInputEvents.is_movement_input():
 		transition.emit("Walk")
+		return
 	
 	if GameInputEvents.dodge():
 		transition.emit("Dodge")
+		return
 	
 	if GameInputEvents.skill_input() != -1:
 		transition.emit("Cast")
+		return
 	
 	if GameManager.is_shop_opened:
 		transition.emit("Locked")
+		return
+	
+	if GameInputEvents.attack() and player.can_slash:
+		transition.emit("Attack")
+		return
 
 
 func _on_enter() -> void:

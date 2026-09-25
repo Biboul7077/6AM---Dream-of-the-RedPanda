@@ -53,21 +53,17 @@ func _try_purchase(item: ShopItem) -> void:
 	item.apply()
 	InventoryManager.add_collectable("KeoCoin", -item.price)
 	audio_stream_player.play()
+	shop_id.is_used = true
+	shop_id.close_shop()
 
 
 func _on_upgrade_button_1_pressed() -> void:
 	_try_purchase(shop_set[0])
-	shop_id.is_used = true
-	Input.action_press("keyExit")
 
 
 func _on_upgrade_button_2_pressed() -> void:
 	_try_purchase(shop_set[1])
-	shop_id.is_used = true
-	Input.action_press("keyExit")
 
 
 func _on_upgrade_button_3_pressed() -> void:
 	_try_purchase(shop_set[2])
-	shop_id.is_used = true
-	Input.action_press("keyExit")

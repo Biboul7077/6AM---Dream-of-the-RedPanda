@@ -1,5 +1,6 @@
 extends NodeState
 
+@export var player: Player
 
 func _on_process(_delta : float) -> void:
 	pass
@@ -15,7 +16,7 @@ func _on_next_transitions() -> void:
 
 
 func _on_enter() -> void:
-	pass
+	player.velocity = Vector2.ZERO
 
 
 func _on_exit() -> void:

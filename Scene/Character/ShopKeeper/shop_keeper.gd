@@ -14,6 +14,9 @@ func _ready() -> void:
 	interactable_component.interactable_activated.connect(on_interactable_activated)
 	interactable_component.interactable_deactivated.connect(on_interactable_deactivated)
 	shop_set = UpgradeManager.choose_random_upgrade(is_first_shop)
+	for i in shop_set.size():
+		if shop_set[i] != null:
+			shop_set[i] = shop_set[i].duplicate()
 	if is_first_shop:
 		make_spell_free()
 
@@ -25,8 +28,16 @@ func _process(_delta: float) -> void:
 		UpgradeManager.shop_id = self
 		TimeManager.pause(&"shop")
 	if active and Input.is_action_just_pressed("keyExit"):
+		print("bouh")
 		GameManager.is_shop_opened = false
 		TimeManager.resume(&"shop")
+
+
+func close_shop() -> void:
+	if not GameManager.is_shop_opened:
+		return
+	GameManager.is_shop_opened = false
+	TimeManager.resume(&"shop")
 
 
 func make_spell_free():
