@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_fsjq0")
-variable_name = "player_recovery_time"
+variable_name = "recovery_time"
 value = 0.85
 operation = 2
 item_name = "Chronon Heal"

@@ -27,6 +27,8 @@ func _ready() -> void:
 	place_starting_room()
 	generate_path(start,critical_path_length, "C")
 	generate_branches()
+	var start_world_position: Vector2 = Vector2(start) * Vector2(room_dimension) + Vector2(room_dimension) / 2.0
+	GameManager.initialize_player_position(start_world_position)
 	generate_rooms()
 
 
@@ -96,8 +98,6 @@ func generate_branches() -> void:
 			branch_candidates.erase(candidate)
 
 
-## Traduit un déplacement d'une case (delta) en direction DataTypes.Dir.
-## y+1 = plus bas à l'écran = sud, y-1 = plus haut à l'écran = nord.
 func dir_from_delta(delta: Vector2i) -> int:
 	if delta == Vector2i(0, 1):
 		return DataTypes.Dir.SOUTH
@@ -123,11 +123,6 @@ func opposite_dir(dir: int) -> int:
 	return 0
 
 
-## Pose (add = true) ou retire (add = false) la connexion entre deux cases
-## réellement adjacentes sur le chemin de génération. C'est ça qui garantit
-## que seules les salles "vraiment" reliées entre elles portent une porte
-## commune, contrairement à un scan de voisinage post-génération qui
-## connecterait aussi les salles simplement collées par hasard.
 func set_connection(a: Vector2i, b: Vector2i, add: bool) -> void:
 	var dir_a: int = dir_from_delta(b - a)
 	var dir_b: int = opposite_dir(dir_a)
@@ -141,7 +136,6 @@ func set_connection(a: Vector2i, b: Vector2i, add: bool) -> void:
 
 func generate_rooms() -> void:
 	var current_position: Vector2
-	var start_position: Vector2
  
 	for y in dimensions.y:
 		for x in dimensions.x:
@@ -152,7 +146,6 @@ func generate_rooms() -> void:
 			if level[x][y] is String:
 				if level[x][y] == "S":
 					room_id = START_ROOM.instantiate()
-					start_position = current_position + Vector2(room_dimension) / 2
 				elif level[x][y] == "E":
 					room_id = BED_ROOM.instantiate()
 				elif level[x][y]:
@@ -165,5 +158,3 @@ func generate_rooms() -> void:
 				add_child(room_id)
 				if room_id.has_method("configure"):
 					room_id.configure(mask)
- 
-	GameManager.initialize_player_position(start_position)

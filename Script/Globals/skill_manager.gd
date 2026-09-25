@@ -75,4 +75,4 @@ func recharging_time_remaining(skill: Skill) -> float:
 
 
 func on_game_started() -> void:
-	current_skill_list = GameManager.player_skills
+	current_skill_list = GameManager.player_stats.skills

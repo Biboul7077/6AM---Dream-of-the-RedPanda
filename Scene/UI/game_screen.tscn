@@ -1,10 +1,58 @@
 [gd_scene format=3 uid="uid://cp6cdnv43b0dh"]
 
 [ext_resource type="PackedScene" uid="uid://bsb58jvwiujel" path="res://Scene/UI/count_down_panel.tscn" id="1_sbtni"]
-[ext_resource type="Script" uid="uid://c3wcy65bhx5vk" path="res://Scene/UI/label.gd" id="2_vtafi"]
+[ext_resource type="Script" uid="uid://cndb7xrdkty8n" path="res://Scene/UI/shockwave_colorrect.gd" id="2_1nye4"]
+[ext_resource type="Shader" uid="uid://d1cgav0ojxrk4" path="res://Script/Shaders/timestop_shockwave.gdshader" id="2_2c1v0"]
 [ext_resource type="PackedScene" uid="uid://yxhyplhqajcm" path="res://Scene/UI/skill_panel.tscn" id="3_vtafi"]
 
+[sub_resource type="GDScript" id="GDScript_vtafi"]
+script/source = "extends CanvasLayer
+
+
+func _ready() -> void:
+	visible = !GameManager.is_shop_opened
+	GameManager.shop_state_changed.connect(on_shop_state_changed)
+
+
+func on_shop_state_changed(opened: bool) -> void:
+	visible = !opened
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k558x"]
+shader = ExtResource("2_2c1v0")
+shader_parameter/progress = 0.38400001824
+shader_parameter/strength = 0.08
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/max_radius = 1.5
+shader_parameter/aberration = 0.425
+shader_parameter/width = 0.04
+shader_parameter/feather = 0.135
+
+[sub_resource type="GDScript" id="GDScript_vygcj"]
+script/source = "extends Label
+
+var money: int = 0
+
+func _ready() -> void:
+	InventoryManager.inventory_changed.connect(on_inventory_changed)
+
+func on_inventory_changed():
+	if InventoryManager.inventory.get(\"KeoCoin\") != null:
+		money = InventoryManager.inventory[\"KeoCoin\"]
+	text = str(money)+\" KeoCoins\"
+"
+
 [node name="GameScreen" type="CanvasLayer" unique_id=1400287572]
+script = SubResource("GDScript_vtafi")
+
+[node name="ShockwaveColorRect" type="ColorRect" parent="." unique_id=1329518399]
+material = SubResource("ShaderMaterial_k558x")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1nye4")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=383285427]
 anchors_preset = 15
@@ -30,7 +78,7 @@ size_flags_vertical = 8
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=400123941]
 layout_mode = 2
 text = "0 KeoCoins"
-script = ExtResource("2_vtafi")
+script = SubResource("GDScript_vygcj")
 
 [node name="SkillPanel" parent="MarginContainer/VBoxContainer" unique_id=216889701 instance=ExtResource("3_vtafi")]
 layout_mode = 2

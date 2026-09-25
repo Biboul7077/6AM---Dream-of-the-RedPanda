@@ -8,8 +8,6 @@ extends Node2D
 @export var is_first_shop: bool
 @export var is_used: bool
 
-var shop_screen_scene_root:String = "/root/MainScene/GameRoot/ShopScreen"
-var game_screen_scene_root:String = "/root/MainScene/GameRoot/GameScreen"
 var active: bool = false
 
 func _ready() -> void:
@@ -26,13 +24,9 @@ func _process(_delta: float) -> void:
 		UpgradeManager.current_shop = shop_set
 		UpgradeManager.shop_id = self
 		TimeManager.pause(&"shop")
-		get_tree().root.get_node(shop_screen_scene_root).visible = true
-		get_tree().root.get_node(game_screen_scene_root).visible = false
 	if active and Input.is_action_just_pressed("keyExit"):
 		GameManager.is_shop_opened = false
 		TimeManager.resume(&"shop")
-		get_tree().root.get_node(shop_screen_scene_root).visible = false
-		get_tree().root.get_node(game_screen_scene_root).visible = true
 
 
 func make_spell_free():

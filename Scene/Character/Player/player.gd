@@ -21,6 +21,7 @@ var attack_combo: int = 0
 var attack_max_combo: int = 3
 
 func _ready() -> void:
+	add_to_group("player")
 	sword_hit_component.disabled = true
 
 func _physics_process(_delta: float) -> void:

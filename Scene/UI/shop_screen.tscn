@@ -2,7 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://mschdak0kdnh" path="res://Scene/UI/shop_panel.tscn" id="1_masko"]
 
+[sub_resource type="GDScript" id="GDScript_masko"]
+script/source = "extends CanvasLayer
+
+
+func _ready() -> void:
+	visible = GameManager.is_shop_opened
+	GameManager.shop_state_changed.connect(on_shop_state_changed)
+
+
+func on_shop_state_changed(opened: bool) -> void:
+	visible = opened
+"
+
 [node name="ShopScreen" type="CanvasLayer" unique_id=540270839]
+script = SubResource("GDScript_masko")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1730230768]
 anchors_preset = 15

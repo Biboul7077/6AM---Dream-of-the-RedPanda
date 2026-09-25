@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_ivv5w")
-variable_name = "player_damage"
+variable_name = "damage"
 value = 1.0
 item_name = "Smithing"
 description = "+1 damage point"

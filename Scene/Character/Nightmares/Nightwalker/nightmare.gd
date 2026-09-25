@@ -27,14 +27,26 @@ func _ready() -> void:
 	add_to_group("enemies")
 	particles_damage.emitting = false
 	hurt_component.hurt.connect(on_hurt)
-	GameManager.difficulty_increased.connect(on_difficulty_increased)
 	TimeManager.timestop_changed.connect(on_timestop_changed)
 	damage_component.max_damaged_reached.connect(on_max_damaged_reached)
 	on_timestop_changed(TimeManager.timestop)
 
+
 func _process(_delta: float) -> void:
 	flash_amount = max(flash_amount - 0.03, 0.0)
 	sprite_2d.material.set_shader_parameter('flash_amount',flash_amount)
+
+
+func set_target(new_target: Player) -> void:
+	if target == new_target:
+		return
+	var had_target := target != null
+	target = new_target
+	if new_target != null and not had_target:
+		GameManager.mark_player_detected()
+	elif new_target == null and had_target:
+		GameManager.clear_player_detection()
+
 
 func on_hurt(hit_damage: int) -> void:
 	state_machine.current_node_state.transition.emit("KnockedOut")
@@ -44,10 +56,13 @@ func on_hurt(hit_damage: int) -> void:
 	damage_component.apply_damage(hit_damage)
 	await get_tree().create_timer(2.0).timeout
 
+
 func on_max_damaged_reached() -> void:
+	set_target(null)
 	nightmare_vanished.emit()
 	call_deferred("add_resources_scene")
 	queue_free()
+
 
 func add_resources_scene() -> void:
 	for coin_amount in money_drops:
@@ -59,10 +74,6 @@ func add_resources_scene() -> void:
 	var chrononshard_instance = chrononshard_scene.instantiate() as Node2D
 	chrononshard_instance.position = position
 	get_parent().add_child(chrononshard_instance)
-
-func on_difficulty_increased() -> void:
-	damage_component.current_damage = (damage_component.current_damage * GameManager.enemy_maximum_damage)/damage_component.max_damage
-	damage_component.max_damage = GameManager.enemy_maximum_damage
 
 
 func on_timestop_changed(stopped: bool) -> void:

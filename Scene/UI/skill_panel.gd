@@ -2,7 +2,7 @@ extends PanelContainer
 @onready var spell_1: Button = $MarginContainer/HBoxContainer/Spell1
 @onready var spell_2: Button = $MarginContainer/HBoxContainer/Spell2
 @onready var spell_3: Button = $MarginContainer/HBoxContainer/Spell3
-var skill_list = GameManager.player_skills
+var skill_list = GameManager.player_stats.skills
 
 func _ready() -> void:
 	SkillManager.skill_list_changed.connect(on_skill_list_changed)

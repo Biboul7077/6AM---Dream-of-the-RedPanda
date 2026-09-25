@@ -5,11 +5,46 @@
 [ext_resource type="PackedScene" uid="uid://cp6cdnv43b0dh" path="res://Scene/UI/game_screen.tscn" id="2_31fxm"]
 [ext_resource type="PackedScene" uid="uid://dhi6d4s2ggj2u" path="res://Scene/Level/level_1.tscn" id="2_i64o6"]
 [ext_resource type="Texture2D" uid="uid://bvqn00u75g8qf" path="res://Assets/Images/light.png" id="3_4kvl3"]
-[ext_resource type="Script" uid="uid://c7v21byi7htf7" path="res://Scene/camera_2d.gd" id="4_0xtjt"]
 [ext_resource type="PackedScene" uid="uid://w5pfg3blh370" path="res://Scene/UI/shop_screen.tscn" id="5_k2rys"]
 [ext_resource type="AudioStream" uid="uid://dljdjee8mgixr" path="res://Assets/Sounds/Music/AmbientMusicCalm.mp3" id="5_lee88"]
 [ext_resource type="AudioStream" uid="uid://dyq1pfpdkbphd" path="res://Assets/Sounds/Music/AmbientMusicFight.mp3" id="6_1d8q1"]
-[ext_resource type="Script" uid="uid://ddx7biwgwda24" path="res://Scene/music.gd" id="7_1d8q1"]
+
+[sub_resource type="GDScript" id="GDScript_k2rys"]
+script/source = "extends Node
+
+@onready var level_root: Node2D = $GameRoot/LevelRoot
+
+func _ready() -> void:
+	SceneManager.register_main_scene(self, level_root)
+
+
+func _exit_tree() -> void:
+	SceneManager.unregister_main_scene(self)
+"
+
+[sub_resource type="GDScript" id="GDScript_i64o6"]
+script/source = "extends Camera2D
+
+var shake_magnitude: float = 0.0
+var shake_remain: float = 0.0
+var shake_length: float = 1.0
+var rng = RandomNumberGenerator.new()
+
+func _process(_delta: float) -> void:
+	offset = random_offset()
+	
+	shake_remain = max(0, shake_remain - ((1/shake_length) * shake_magnitude));
+
+
+func screenshake(_magnitude,_frames):
+	if _magnitude > shake_remain:
+		shake_magnitude = _magnitude
+		shake_remain = shake_magnitude
+		shake_length = _frames
+
+func random_offset() -> Vector2:
+	return Vector2(rng.randf_range(-shake_remain,shake_remain),rng.randf_range(-shake_remain,shake_remain))
+"
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_k2rys"]
 stream_count = 2
@@ -18,7 +53,42 @@ stream_0/volume = 0.0
 stream_1/stream = ExtResource("6_1d8q1")
 stream_1/volume = 0.0
 
+[sub_resource type="GDScript" id="GDScript_0xtjt"]
+script/source = "extends AudioStreamPlayer
+
+@export var fade_speed := 2.0  # dB par frame, à ajuster
+
+const VOLUME_ZERO := -40.0
+
+var target_detected := false
+
+func _ready() -> void:
+	stream.set_sync_stream_volume(1, VOLUME_ZERO)
+
+func _process(_delta: float) -> void:
+	if stream == null:
+		return
+	
+	target_detected = GameManager.is_player_detected
+
+	var vol_exploration = VOLUME_ZERO if target_detected else 1.0
+	var vol_combat = 1.0 if target_detected else VOLUME_ZERO
+
+	# Conversion linéaire -> dB avec un fondu progressif
+	var current_0 = stream.get_sync_stream_volume(0)
+	var current_1 = stream.get_sync_stream_volume(1)
+
+	var goal_0 = vol_exploration
+	var goal_1 = vol_combat
+
+	stream.set_sync_stream_volume(0, move_toward(current_0, goal_0, fade_speed))
+	stream.set_sync_stream_volume(1, move_toward(current_1, goal_1, fade_speed))
+	
+	stream_paused = (TimeManager.timestop and !GameManager.is_shop_opened)
+"
+
 [node name="MainScene" type="Node" unique_id=1765893617]
+script = SubResource("GDScript_k2rys")
 
 [node name="GameRoot" type="Node2D" parent="." unique_id=1115628024]
 y_sort_enabled = true
@@ -40,7 +110,7 @@ limit_top = 0
 limit_right = 3584
 limit_bottom = 2560
 position_smoothing_enabled = true
-script = ExtResource("4_0xtjt")
+script = SubResource("GDScript_i64o6")
 
 [node name="PointLight2D" type="PointLight2D" parent="GameRoot/Player" unique_id=754935341]
 texture = ExtResource("3_4kvl3")
@@ -54,4 +124,4 @@ visible = false
 stream = SubResource("AudioStreamSynchronized_k2rys")
 autoplay = true
 bus = &"Music"
-script = ExtResource("7_1d8q1")
+script = SubResource("GDScript_0xtjt")

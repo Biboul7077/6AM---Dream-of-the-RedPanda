@@ -7,4 +7,4 @@ func executer(caster: Node, target = null) -> void:
 		return
 	await caster.get_tree().create_timer(3.0).timeout
 	if is_instance_valid(true_target) and true_target.has_method("on_hurt"):
-		true_target.on_hurt(GameManager.player_killer_queen_damage)
+		true_target.on_hurt(GameManager.player_stats.killer_queen_damage)

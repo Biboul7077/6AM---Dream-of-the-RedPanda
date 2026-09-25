@@ -13,6 +13,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if active:
 		if Input.is_action_just_pressed("keyInteract"):
+			SkillManager.cooldown_reset()
+			InventoryManager.reset_collectable()
 			GameManager.show_game_menu_screen(true)
 			TimeManager.set_initial_time()
 

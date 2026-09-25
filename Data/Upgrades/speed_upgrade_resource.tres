@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_qs6t2")
-variable_name = "player_speed"
+variable_name = "speed"
 value = 1.2
 operation = 2
 item_name = "Way of the Beast"

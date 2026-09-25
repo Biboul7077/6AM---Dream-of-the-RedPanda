@@ -18,7 +18,7 @@ func _try_hurt(area: Area2D) -> void:
 	if hit_component == null:
 		return
 	GameManager.frame_freeze(0.0, 0.2)
-	hurt.emit(hit_component.hit_damage * GameManager.player_damage)
+	hurt.emit(hit_component.hit_damage * GameManager.player_stats.damage)
 
 
 func set_invincible(value: bool) -> void:

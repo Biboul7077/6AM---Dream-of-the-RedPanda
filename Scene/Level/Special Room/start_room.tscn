@@ -32,8 +32,8 @@ y_sort_enabled = true
 [node name="ShopKeeper" parent="Entity" unique_id=337558340 instance=ExtResource("2_c3767")]
 y_sort_enabled = true
 position = Vector2(74, 168)
+is_first_shop = true
 
 [node name="ShopKeeper2" parent="Entity" unique_id=1233720790 instance=ExtResource("2_c3767")]
 y_sort_enabled = true
 position = Vector2(408, 168)
-is_first_shop = false

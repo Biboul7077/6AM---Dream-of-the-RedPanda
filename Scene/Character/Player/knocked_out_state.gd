@@ -46,7 +46,7 @@ func _on_enter() -> void:
 	animated_sprite_2d.play("KnockedOut")
 	initial_position = player.global_position
 	knocked_out_state_timeout = false
-	knocked_out_state_timer.start(GameManager.player_recovery_time)
+	knocked_out_state_timer.start(GameManager.player_stats.recovery_time)
 
 func _on_exit() -> void:
 	knocked_out_state_timeout = true

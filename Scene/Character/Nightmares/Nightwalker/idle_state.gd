@@ -19,7 +19,6 @@ func _on_physics_process(_delta : float) -> void:
 
 func _on_next_transitions() -> void:
 	if player_spotted:
-		GameManager.is_player_detected = true
 		transition.emit("Chase")
 
 
@@ -31,5 +30,5 @@ func _on_exit() -> void:
 	pass
 
 func on_player_detected(target: Player) -> void:
-	nightmare.target = target
+	nightmare.set_target(target)
 	player_spotted = true

@@ -29,6 +29,7 @@ InventoryManager="*uid://cwjlyhrn5kifc"
 SkillManager="*uid://ct0kd0bthedfx"
 UpgradeManager="*uid://e573l4wd3mfs"
 DiscordManager="*uid://dwm37cwvb11c2"
+VFXManager="*uid://3nu8p0pw4p6j"
 
 [display]
 

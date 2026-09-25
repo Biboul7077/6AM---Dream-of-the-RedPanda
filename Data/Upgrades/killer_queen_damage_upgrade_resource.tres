@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_e83mn")
-variable_name = "player_killer_queen_damage"
+variable_name = "killer_queen_damage"
 value = 1.0
 item_name = "Chronon Pressure"
 description = "+1 Time Bomb damage"

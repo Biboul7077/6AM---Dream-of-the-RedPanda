@@ -13,3 +13,6 @@ func add_collectable(collectable_name: String, value = 1) -> void:
 		inventory[collectable_name] += value
 	
 	inventory_changed.emit()
+
+func reset_collectable() -> void:
+	inventory.clear()

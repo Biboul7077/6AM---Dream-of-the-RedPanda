@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_aq1cl")
-variable_name = "player_time_stop_duration"
+variable_name = "time_stop_duration"
 value = 1.25
 operation = 2
 item_name = "Longer Chronon Focus"

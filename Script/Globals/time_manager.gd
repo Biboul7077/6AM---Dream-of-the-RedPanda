@@ -25,19 +25,20 @@ var timestop: bool:
 func _ready() -> void:
 	set_initial_time()
 
+
 func _process(delta: float) -> void:
 	if !timestop:
 		time += delta * GameManager.game_speed * GAME_MINUTE_DURATION
 	game_time.emit(time)
 	
 	recalculate_time()
-	if tokens != {}:
-		print(tokens)
+
 
 func set_initial_time() -> void:
 	var initial_total_minute = initial_hour * MINUTES_PER_HOUR + initial_minute
 	
 	time = initial_total_minute * GAME_MINUTE_DURATION
+
 
 func recalculate_time() -> void:
 	var total_minutes: int = int(time / GAME_MINUTE_DURATION)
@@ -53,6 +54,7 @@ func recalculate_time() -> void:
 		set_initial_time()
 		SkillManager.cooldown_reset()
 		GameManager.show_game_menu_screen()
+		InventoryManager.reset_collectable()
 	
 	
 	if minute == initial_minute and hour != initial_hour and !difficulty_changed:
@@ -84,6 +86,8 @@ func pause_for(_reason: StringName, _duration: float) -> void:
 	var token := next_token
 	tokens[_reason] = token
 	await get_tree().create_timer(_duration).timeout
+	if _reason == &"zawarudo":
+		VFXManager.timestop_ended.emit()
 	if tokens.get(_reason) == token:
 		resume(_reason)
 
