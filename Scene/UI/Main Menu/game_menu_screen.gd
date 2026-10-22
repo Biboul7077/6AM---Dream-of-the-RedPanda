@@ -11,6 +11,7 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	TimeManager.pause(&"main_menu")
 	if game_over_screen_background_good_ending.visible:
 		label.text = "You made it back to your body !"
 	elif game_over_screen_background_bad_ending.visible:
@@ -21,6 +22,7 @@ func _ready() -> void:
 
 func _on_start_game_button_pressed() -> void:
 	GameManager.start_game()
+	TimeManager.resume(&"main_menu")
 	queue_free()
 
 

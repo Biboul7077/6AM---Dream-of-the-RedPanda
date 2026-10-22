@@ -81,6 +81,7 @@ func initialize_statistics() -> void:
 	detection_count = 0
 	player_stats.reset_stats()
 	enemy_stats.reset_stats()
+	InventoryManager.reset_collectable()
 
 
 func frame_freeze(timescale: float, duration: float) -> void:

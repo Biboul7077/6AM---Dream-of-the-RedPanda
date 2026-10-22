@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://de2k7h1cqd8lo"]
 
-[ext_resource type="Script" uid="uid://cop3un0obr0xr" path="res://Scene/UI/fullscreen_check_button.gd" id="1_umd2t"]
+[ext_resource type="Script" uid="uid://cop3un0obr0xr" path="res://Scene/UI/Settings/Graphics/fullscreen_check_button.gd" id="1_umd2t"]
 
 [node name="SettingsFullscreen" type="Control" unique_id=1367441805]
 layout_mode = 3

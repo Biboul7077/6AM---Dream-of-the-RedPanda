@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://mschdak0kdnh"]
 
 [ext_resource type="Theme" uid="uid://b3xrbodd20u5t" path="res://Scene/UI/game_ui_theme.tres" id="1_1yfji"]
-[ext_resource type="Script" uid="uid://ddtp0rulxed01" path="res://Scene/UI/shop_panel.gd" id="2_7xl31"]
-[ext_resource type="PackedScene" uid="uid://bpd12kautxudo" path="res://Scene/UI/upgrade_button.tscn" id="3_kxek1"]
+[ext_resource type="Script" uid="uid://ddtp0rulxed01" path="res://Scene/UI/Shop Menu/shop_panel.gd" id="2_7xl31"]
+[ext_resource type="PackedScene" uid="uid://bpd12kautxudo" path="res://Scene/UI/Shop Menu/upgrade_button.tscn" id="3_kxek1"]
 [ext_resource type="AudioStream" uid="uid://1xtkopt2a6rn" path="res://Assets/Sounds/SFX/sndBuyUpgrade.wav" id="6_6sfli"]
 
 [node name="ShopPanel" type="PanelContainer" unique_id=1021193151]

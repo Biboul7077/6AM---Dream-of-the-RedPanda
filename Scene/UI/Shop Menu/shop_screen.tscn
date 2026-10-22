@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://w5pfg3blh370"]
 
-[ext_resource type="Script" uid="uid://cm1x8dndrepyc" path="res://Scene/UI/shop_screen.gd" id="1_jnmhl"]
-[ext_resource type="PackedScene" uid="uid://mschdak0kdnh" path="res://Scene/UI/shop_panel.tscn" id="1_masko"]
+[ext_resource type="Script" uid="uid://cm1x8dndrepyc" path="res://Scene/UI/Shop Menu/shop_screen.gd" id="1_jnmhl"]
+[ext_resource type="PackedScene" uid="uid://mschdak0kdnh" path="res://Scene/UI/Shop Menu/shop_panel.tscn" id="1_masko"]
 
 [node name="ShopScreen" type="CanvasLayer" unique_id=540270839]
 script = ExtResource("1_jnmhl")

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://tqmktfmcgh6q"]
+
+[ext_resource type="Script" uid="uid://cqt278rn302fn" path="res://Scene/UI/Game HUD/chronon_progress_bar.gd" id="1_ai5u5"]
+
+[node name="ChrononProgressBar" type="PanelContainer" unique_id=1736291740]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1277446338]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer" unique_id=1096463018]
+modulate = Color(3.078795e-06, 0.6763993, 0.17752902, 1)
+layout_mode = 2
+max_value = 4.0
+script = ExtResource("1_ai5u5")

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://cp6cdnv43b0dh"]
 
-[ext_resource type="PackedScene" uid="uid://bsb58jvwiujel" path="res://Scene/UI/count_down_panel.tscn" id="1_sbtni"]
-[ext_resource type="Script" uid="uid://cndb7xrdkty8n" path="res://Scene/UI/shockwave_colorrect.gd" id="2_1nye4"]
+[ext_resource type="PackedScene" uid="uid://bsb58jvwiujel" path="res://Scene/UI/Game HUD/count_down_panel.tscn" id="1_sbtni"]
+[ext_resource type="Script" uid="uid://cndb7xrdkty8n" path="res://Scene/UI/Game HUD/shockwave_colorrect.gd" id="2_1nye4"]
 [ext_resource type="Shader" uid="uid://d1cgav0ojxrk4" path="res://Script/Shaders/timestop_shockwave.gdshader" id="2_2c1v0"]
-[ext_resource type="PackedScene" uid="uid://yxhyplhqajcm" path="res://Scene/UI/skill_panel.tscn" id="3_vtafi"]
+[ext_resource type="PackedScene" uid="uid://yxhyplhqajcm" path="res://Scene/UI/Game HUD/skill_panel.tscn" id="3_vtafi"]
+[ext_resource type="PackedScene" uid="uid://tqmktfmcgh6q" path="res://Scene/UI/Game HUD/chronon_progress_bar.tscn" id="5_hrmrd"]
 
 [sub_resource type="GDScript" id="GDScript_vtafi"]
 script/source = "extends CanvasLayer
@@ -84,3 +85,6 @@ script = SubResource("GDScript_vygcj")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+
+[node name="ChrononProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1736291740 instance=ExtResource("5_hrmrd")]
+layout_mode = 2

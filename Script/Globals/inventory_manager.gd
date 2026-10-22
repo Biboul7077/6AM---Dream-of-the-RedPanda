@@ -12,7 +12,7 @@ func add_collectable(collectable_name: String, value = 1) -> void:
 	else:
 		inventory[collectable_name] += value
 	
-	inventory_changed.emit()
+	inventory_changed.emit(collectable_name)
 
 func reset_collectable() -> void:
 	inventory.clear()

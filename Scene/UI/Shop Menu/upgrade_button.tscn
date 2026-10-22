@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bpd12kautxudo"]
 
 [ext_resource type="Texture2D" uid="uid://ka60e02nltnb" path="res://Assets/Images/UI/sIconDamageUpgrade.png" id="1_4ukdl"]
-[ext_resource type="Script" uid="uid://cjsk4ekb1amux" path="res://Scene/UI/upgrade_button.gd" id="1_auoy0"]
+[ext_resource type="Script" uid="uid://cjsk4ekb1amux" path="res://Scene/UI/Shop Menu/upgrade_button.gd" id="1_auoy0"]
 
 [node name="Upgrade" type="Button" unique_id=1806822650]
 custom_minimum_size = Vector2(180, 320)

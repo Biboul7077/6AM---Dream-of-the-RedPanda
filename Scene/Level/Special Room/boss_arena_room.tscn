@@ -28,4 +28,4 @@ tile_set = ExtResource("1_nlver")
 [node name="Entity" type="Node2D" parent="." unique_id=599797682]
 
 [node name="BossParasomnia" parent="Entity" unique_id=435254082 instance=ExtResource("2_8x8eq")]
-position = Vector2(248, 261)
+position = Vector2(257, 96)
