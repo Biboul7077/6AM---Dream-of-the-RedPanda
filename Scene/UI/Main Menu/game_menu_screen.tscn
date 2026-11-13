@@ -42,6 +42,11 @@ offset_top = 10.0
 offset_right = 1270.0
 offset_bottom = 710.0
 
+[node name="TextEdit" type="Label" parent="MainMenuMarginContainer" unique_id=385463673]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Version 0.4.2"
+
 [node name="Label" type="Label" parent="MainMenuMarginContainer" unique_id=859024230]
 layout_mode = 2
 size_flags_horizontal = 8

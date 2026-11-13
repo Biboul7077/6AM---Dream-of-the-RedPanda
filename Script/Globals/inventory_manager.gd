@@ -6,12 +6,13 @@ signal inventory_changed
 
 func add_collectable(collectable_name: String, value = 1) -> void:
 	inventory.get_or_add(collectable_name)
-
+	
 	if inventory[collectable_name] == null:
 		inventory[collectable_name] = value
 	else:
 		inventory[collectable_name] += value
 	
+	print(inventory)
 	inventory_changed.emit(collectable_name)
 
 func reset_collectable() -> void:

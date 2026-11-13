@@ -28,7 +28,6 @@ func _process(_delta: float) -> void:
 		UpgradeManager.shop_id = self
 		TimeManager.pause(&"shop")
 	if active and Input.is_action_just_pressed("keyExit"):
-		print("bouh")
 		GameManager.is_shop_opened = false
 		TimeManager.resume(&"shop")
 
