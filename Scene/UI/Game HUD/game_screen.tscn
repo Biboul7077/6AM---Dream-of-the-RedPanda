@@ -40,7 +40,6 @@ func _ready() -> void:
 func on_inventory_changed(collectable_name):
 	if collectable_name == \"KeoCoin\":
 		money = InventoryManager.inventory[collectable_name]
-		print(\"bouh\")
 	text = str(money)+\" KeoCoins\"
 "
 
